@@ -16,9 +16,10 @@ public class PlayerSkills
 		unlockedSkillTypeList = new List<SkillType>();
 	}
 
-	public void UnclockSkill(SkillType skillType)
+	public void UnlockSkill(SkillType skillType)
 	{
 		unlockedSkillTypeList.Add(skillType);
+		Debug.Log(isSkillUnlocked(skillType));	
 	}
 
 	public bool isSkillUnlocked(SkillType skillType)
