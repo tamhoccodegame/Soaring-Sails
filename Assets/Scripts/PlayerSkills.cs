@@ -9,17 +9,16 @@ public class PlayerSkills
 		skill1,
 	}
 
-	private List<SkillType> unlockedSkillTypeList;
+	private static List<SkillType> unlockedSkillTypeList;
 
 	public PlayerSkills()
 	{
 		unlockedSkillTypeList = new List<SkillType>();
 	}
 
-	public void UnlockSkill(SkillType skillType)
+	public static void UnlockSkill(SkillType skillType)
 	{
 		unlockedSkillTypeList.Add(skillType);
-		Debug.Log(isSkillUnlocked(skillType));	
 	}
 
 	public bool isSkillUnlocked(SkillType skillType)
