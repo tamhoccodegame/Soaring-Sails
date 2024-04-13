@@ -1,24 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSkills
 {
-   public enum SkillType
+	public event EventHandler<OnSkillUnlockedEvenetArgs> OnSkillUnlocked;
+	public class OnSkillUnlockedEvenetArgs : EventArgs
 	{
-		skill1,
+		public SkillType skillType;
 	}
 
-	private static List<SkillType> unlockedSkillTypeList;
+   public enum SkillType
+	{
+		HealthMax_1,
+		HealthMax_2,
+		HealthMax_3,
+		MovementSpeed_1,
+		MovementSpeed_2,
+		MovementSpeed_3,
+		Damage_1,
+		Damage_2,
+		Damage_3,
+		Damage_4,
+	}
+
+	private List<SkillType> unlockedSkillTypeList;
 
 	public PlayerSkills()
 	{
 		unlockedSkillTypeList = new List<SkillType>();
 	}
 
-	public static void UnlockSkill(SkillType skillType)
+	public void UnlockSkill(SkillType skillType)
 	{
-		unlockedSkillTypeList.Add(skillType);
+		if (!isSkillUnlocked(skillType))
+		{
+			unlockedSkillTypeList.Add(skillType);
+			OnSkillUnlocked?.Invoke(this, new OnSkillUnlockedEvenetArgs { skillType = skillType });
+		}
+		
 	}
 
 	public bool isSkillUnlocked(SkillType skillType)
