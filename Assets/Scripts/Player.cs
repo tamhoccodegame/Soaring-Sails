@@ -5,12 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private PlayerSkills playerSkills;
+    private PlayerController1 playerController1;
     // Start is called before the first frame update
     void Start()
     {
+        playerController1 = GetComponent<PlayerController1>();
         playerSkills = new PlayerSkills();
 		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
     }
+
 
 	private void PlayerSkills_OnSkillUnlocked(object sender, PlayerSkills.OnSkillUnlockedEvenetArgs e)
 	{
@@ -27,10 +30,10 @@ public class Player : MonoBehaviour
 				SetHealthAmountMax(140);
 				break;
 			case PlayerSkills.SkillType.MovementSpeed_1:
-                SetMovementSpeed(20);
+                SetMovementSpeed(10);
 				break;
 			case PlayerSkills.SkillType.MovementSpeed_2:
-				SetMovementSpeed(20);
+				SetMovementSpeed(15);
 				break;
 			case PlayerSkills.SkillType.MovementSpeed_3:
 				SetMovementSpeed(20);
@@ -39,9 +42,11 @@ public class Player : MonoBehaviour
 			case PlayerSkills.SkillType.Damage_1:
                 SetDamage(30);
 				break;
+
 			case PlayerSkills.SkillType.Damage_2:
 				SetDamage(30);
 				break;
+
 			case PlayerSkills.SkillType.Damage_3:
 				SetDamage(30);
 				break;
@@ -79,9 +84,9 @@ public class Player : MonoBehaviour
 
     }
 
-    private void SetMovementSpeed(int speed)
+    private void SetMovementSpeed(float speed)
     {
-
+        playerController1.SetPlayerSpeed(speed);
     }
 
     private void SetDamage(int damage)
