@@ -5,9 +5,9 @@ using UnityEngine.TextCore.Text;
 
 public class PlayerController1 : MonoBehaviour
 {
-   // public bool FacingLeft { get { return FacingLeft; } set { FacingLeft = value; } }
+  
 
-    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float moveSpeed = 5f;
 
     private PlayerControls playerControls;
     private Vector2 movement;
@@ -53,13 +53,13 @@ public class PlayerController1 : MonoBehaviour
         if (mousePos.x < playerScreenPoint.x)
         {
             mySpriteRender.flipX = true;
-         //   FacingLeft = true;
+        
         }
         else
         {
             mySpriteRender.flipX = false;
 
-          //  FacingLeft = false;
+         
         }
     }
 }
