@@ -9,7 +9,7 @@ public class PlayerController1 : MonoBehaviour
 {
   
 
-    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float moveSpeed = 5f;
 
     private PlayerControls playerControls;
     private Vector2 movement;
@@ -58,6 +58,7 @@ public class PlayerController1 : MonoBehaviour
         bool havemove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         if (havemove)
         {
+<<<<<<< HEAD
            mySpriteRender.transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f); // sign lay dau cua so ( velocity) bo vao scale 
         }      
     }
@@ -77,6 +78,16 @@ public class PlayerController1 : MonoBehaviour
         else
         {
             dashTime2 -= Time.deltaTime;
+=======
+            mySpriteRender.flipX = true;
+        
+        }
+        else
+        {
+            mySpriteRender.flipX = false;
+
+         
+>>>>>>> a2c604f72b442668bf83f73382be5eb7ce98620c
         }
     }
 }
