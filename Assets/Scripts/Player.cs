@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    PlayerSkills playerSkills;
-
+   
     // Skill dash //   
     [SerializeField] float dashBoots = 15f; 
     [SerializeField] float dashTime1;      
@@ -22,7 +21,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerSkills = new PlayerSkills();
+       
     }
 
     void Update()
@@ -30,21 +29,11 @@ public class Player : MonoBehaviour
         Flip();
         Run();
         Dash();
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            if(CanUseSkill1())
-            {
-                Vector3 newLocation = new Vector3(1,1,0);
-                transform.localPosition += newLocation;
-            }
-        }
+       
     }
     
 
-    public bool CanUseSkill1()
-    {
-        return playerSkills.isSkillUnlocked(PlayerSkills.SkillType.skill1);
-    }
+   
     void Run()
     {
         moveInput.x = Input.GetAxis("Horizontal");

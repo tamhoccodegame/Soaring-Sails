@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using UnityEngine.InputSystem;
+
 
 public class PlayerController1 : MonoBehaviour
 {
-   // public bool FacingLeft { get { return FacingLeft; } set { FacingLeft = value; } }
+  
 
     [SerializeField] private float moveSpeed = 1f;
 
@@ -13,6 +15,12 @@ public class PlayerController1 : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rb;
     public SpriteRenderer mySpriteRender;
+
+    // Skill dash //   
+    [SerializeField] float dashBoots = 15f;
+    [SerializeField] float dashTime1 = 0.25f;
+    public float dashTime2;
+    bool onceDash = false;
 
     private void Awake()
     {
@@ -27,39 +35,48 @@ public class PlayerController1 : MonoBehaviour
 
     private void Update()
     {
-        PlayerInput();
+        Dash();
 
     }
 
     private void FixedUpdate()
     {
         Move();
-        AdjustPlayerFacingDirection();
+        Flip();
     }
 
-    private void PlayerInput()
+    private void OnMove(InputValue value)
     {
-        movement = playerControls.Movement.Move.ReadValue<Vector2>();
+        movement = value.Get<Vector2>();
     }
     private void Move()
     {
-        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
+        rb.velocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed );
     }
-    private void AdjustPlayerFacingDirection()
+    private void Flip()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-
-        if (mousePos.x < playerScreenPoint.x)
+        bool havemove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        if (havemove)
         {
-            mySpriteRender.flipX = true;
-         //   FacingLeft = true;
+           mySpriteRender.transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f); // sign lay dau cua so ( velocity) bo vao scale 
+        }      
+    }
+    void Dash()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && dashTime2 < -1)
+        {
+            moveSpeed += dashBoots;
+            dashTime2 = dashTime1;
+            onceDash = true;
+        }
+        if (onceDash && dashTime2 <= 0)
+        {
+            moveSpeed -= dashBoots;
+            onceDash = false;
         }
         else
         {
-            mySpriteRender.flipX = false;
-
-          //  FacingLeft = false;
+            dashTime2 -= Time.deltaTime;
         }
     }
 }
