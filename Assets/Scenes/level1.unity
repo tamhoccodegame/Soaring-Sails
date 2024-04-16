@@ -223,6 +223,7 @@ MonoBehaviour:
   slashAnimPrefab: {fileID: 7652799151369111913, guid: 5481d4c5e4145504ea65175dc04d7d3c, type: 3}
   slashAnimSpawnPoint: {fileID: 277936868}
   weaponCollider: {fileID: 1557946380}
+  WeaponCollider: {fileID: 1557946379}
   SlashRenderer: {fileID: 3130067909892093736, guid: 5481d4c5e4145504ea65175dc04d7d3c, type: 3}
 --- !u!1 &170005898
 GameObject:
@@ -493,8 +494,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277936867}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.23, y: 0.02, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.59, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -527,7 +528,7 @@ Transform:
   m_GameObject: {fileID: 512563817}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.31, y: -0.02, z: 0}
+  m_LocalPosition: {x: -4.15, y: -0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -565,9 +566,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.3083975, y: 0}
+  m_Offset: {x: 4.0086503, y: 0}
   serializedVersion: 2
-  m_Radius: 1.8083975
+  m_Radius: 4.5086503
 --- !u!114 &512563820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,7 +704,7 @@ Transform:
   m_GameObject: {fileID: 1224847214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0, z: 0}
+  m_LocalPosition: {x: -0.01, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -848,7 +849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1557946380
 Transform:
   m_ObjectHideFlags: 0
@@ -908,16 +909,24 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.8448386, y: 0.7445307}
-      - {x: 0.13216072, y: 0.8528657}
-      - {x: 0.47283852, y: 0.1629763}
-      - {x: 0.4560181, y: -0.17897548}
-      - {x: 0.12681422, y: -0.67523307}
-      - {x: -0.14281583, y: -1.0100441}
-      - {x: 0.63619375, y: -0.9971831}
-      - {x: 0.9417237, y: -0.6032126}
-      - {x: 1.1158458, y: -0.17018865}
-      - {x: 1.0349344, y: 0.46328986}
+    - - {x: 2.324859, y: 1.2913677}
+      - {x: 1.1344233, y: 1.5263032}
+      - {x: 0.7646013, y: 1.5083332}
+      - {x: 0.72653717, y: 1.4841282}
+      - {x: 1.0990242, y: 1.3670795}
+      - {x: 1.7166313, y: 0.96074474}
+      - {x: 2.1537101, y: 0.49011213}
+      - {x: 2.4678972, y: -0.0845347}
+      - {x: 2.1749756, y: -0.9053426}
+      - {x: 1.2058655, y: -1.290818}
+      - {x: 0.3078117, y: -1.2957962}
+      - {x: 0.21917975, y: -1.3892772}
+      - {x: 0.49829108, y: -1.4798433}
+      - {x: 1.317554, y: -1.5572432}
+      - {x: 2.4784455, y: -1.2613294}
+      - {x: 3.013805, y: -0.70663077}
+      - {x: 3.136035, y: -0.1257889}
+      - {x: 2.9547656, y: 0.5199655}
   m_UseDelaunayMesh: 0
 --- !u!114 &1557946382
 MonoBehaviour:

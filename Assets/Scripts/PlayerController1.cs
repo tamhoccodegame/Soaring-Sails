@@ -58,7 +58,7 @@ public class PlayerController1 : MonoBehaviour
         bool havemove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         if (havemove)
         {
-<<<<<<< HEAD
+
            mySpriteRender.transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f); // sign lay dau cua so ( velocity) bo vao scale 
         }      
     }
@@ -75,19 +75,11 @@ public class PlayerController1 : MonoBehaviour
             moveSpeed -= dashBoots;
             onceDash = false;
         }
+
         else
         {
             dashTime2 -= Time.deltaTime;
-=======
-            mySpriteRender.flipX = true;
-        
-        }
-        else
-        {
-            mySpriteRender.flipX = false;
-
-         
->>>>>>> a2c604f72b442668bf83f73382be5eb7ce98620c
+        }         
         }
     }
-}
+
