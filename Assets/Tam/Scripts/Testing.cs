@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
-    [SerializeField] public Player player;
-	[SerializeField] public UI_SkillTree uiSkillTree;
+    [SerializeField] private Player player;
+	[SerializeField] private UI_SkillTree uiSkillTree;
+	[SerializeField] private LevelBar levelBar;
 
 	private void Start()
 	{
 		uiSkillTree.SetPlayerSkills(player.GetPlayerSkill());
+
+		LevelSystem levelSystem = new LevelSystem();
+		levelBar.SetLevelSystem(levelSystem);
+		player.SetLevelSystem(levelSystem);
+		//levelSystem.AddExperience(110);
+
+
+		
 	}
 }

@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
     private PlayerSkills playerSkills;
     private PlayerController1 playerController1;
+    private LevelSystem levelSystem;
+
+    public ParticleSystem Dust;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +17,18 @@ public class Player : MonoBehaviour
 		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
     }
 
+
+    public void SetLevelSystem(LevelSystem levelSystem)
+    {
+        this.levelSystem = levelSystem;
+
+		levelSystem.OnLevelChanged += LevelSystem_OnLevelChanged;
+    }
+
+	private void LevelSystem_OnLevelChanged(object sender, System.EventArgs e)
+	{
+        Dust.Play();
+	}
 
 	private void PlayerSkills_OnSkillUnlocked(object sender, PlayerSkills.OnSkillUnlockedEvenetArgs e)
 	{
