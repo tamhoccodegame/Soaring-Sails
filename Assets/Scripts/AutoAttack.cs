@@ -12,7 +12,7 @@ public class AutoAttack : MonoBehaviour
        
         if (atkStop == false && onceCall == true)
         {          
-                StartCoroutine(DelayAtk());
+            StartCoroutine(DelayAtk());
             onceCall = false;
         }
     }
@@ -30,7 +30,7 @@ public class AutoAttack : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Kiểm tra nếu đối tượng trong vùng tấn công là quái vật
-        Enemy enemy = other.GetComponent<Enemy>();
+        Enemy enemy = other.GetComponentInParent<Enemy>();
         if (enemy != null)
         {
             if (weapon1 != null)
@@ -44,8 +44,7 @@ public class AutoAttack : MonoBehaviour
             
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
-            {
-            Debug.Log("tr");
+            {          
                 atkStop = true;
             }
         }

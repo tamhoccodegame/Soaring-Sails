@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerController1 : MonoBehaviour
 {
+    public int health;
+    public int damage = 10;
+
   
 
     [SerializeField] private float moveSpeed = 5f;
@@ -81,5 +84,20 @@ public class PlayerController1 : MonoBehaviour
             dashTime2 -= Time.deltaTime;
         }         
         }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log(health);
+        if (health <= 0)
+        {
+            Die();
+        }
     }
+
+    private void Die()
+    {
+        Debug.Log("Die");
+        Destroy(gameObject);
+    }
+}
 
