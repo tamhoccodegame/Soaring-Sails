@@ -57,23 +57,31 @@ public class UI_SkillTree : MonoBehaviour
 			skillButton.UpdateVisuals();
 		}
 
-		foreach(SkillUnlockPath skillUnlockPath in skillUnlockPathArray)
-		{
-			foreach(Image linkImage in skillUnlockPath.linkImageArray)
-			{
-				linkImage.color = new Color(.5f, .5f, .5f);
-				linkImage.sprite = lineSprite;
-			}
-		}
+		//foreach(SkillUnlockPath skillUnlockPath in skillUnlockPathArray)
+		//{
+		//	foreach(Image linkImage in skillUnlockPath.linkImageArray)
+		//	{
+		//		linkImage.color = new Color(.5f, .5f, .5f);
+		//		linkImage.sprite = lineSprite;
+		//	}
+		//}
 
 		foreach (SkillUnlockPath skillUnlockPath in skillUnlockPathArray)
 		{
-			if(playerSkills.IsSkillUnlocked(skillUnlockPath.skillType) || playerSkills.CanUnlock(skillUnlockPath.skillType))
+			if (playerSkills.IsSkillUnlocked(skillUnlockPath.skillType) || playerSkills.CanUnlock(skillUnlockPath.skillType))
 			{
-				foreach(Image linkImage in skillUnlockPath.linkImageArray)
+				foreach (Image linkImage in skillUnlockPath.linkImageArray)
 				{
 					linkImage.color = Color.white;
 					linkImage.sprite = lineGlowSprite;
+				}
+			}
+			else
+			{
+				foreach (Image linkImage in skillUnlockPath.linkImageArray)
+				{
+					linkImage.color = new Color(.5f, .5f, .5f);
+					linkImage.sprite = lineSprite;
 				}
 			}
 		}
@@ -100,6 +108,7 @@ public class UI_SkillTree : MonoBehaviour
 			this.transform = transform;
 			this.playerSkills = playerSkills;
 			this.skillType = skillType;
+			this.image = transform.Find("Image").GetComponent<Image>();
 
 			transform.GetComponent<Button_UI>().ClickFunc = () =>
 			{
@@ -109,20 +118,21 @@ public class UI_SkillTree : MonoBehaviour
 
 		public void UpdateVisuals()
 		{
-			//if(playerSkills.IsSkillUnlocked(skillType))
-			//{
-			//	image.material = null;
-			//}
-			//else
-			//{
-			//	if (playerSkills.CanUnlock(skillType)){
-			//		image.material = skillUnlockableMaterial;
-			//	}
-			//	else
-			//	{
-			//		image.material = skillLockedMaterial;
-			//	}
-			//}
+			if (playerSkills.IsSkillUnlocked(skillType))
+			{
+				image.color = Color.white;
+			}
+			else
+			{
+				if (playerSkills.CanUnlock(skillType))
+				{
+					image.color = new Color(.1f, .1f, .1f);
+				}
+				else
+				{
+					image.color = Color.black;
+				}
+			}
 		}
 	}
 

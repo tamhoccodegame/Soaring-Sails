@@ -7,18 +7,31 @@ public class Player : MonoBehaviour
     private PlayerSkills playerSkills;
     private PlayerController1 playerController1;
     private LevelSystem levelSystem;
+    private Inventory inventory;
+
+    [SerializeField] private UI_Inventory uiInventory;
 
     public ParticleSystem Dust;
-    // Start is called before the first frame update
-    void Start()
+	void Start()
     {
-        playerController1 = GetComponent<PlayerController1>();
+		inventory = new Inventory();
+		uiInventory.SetInventory(inventory);
+        uiInventory.SetPlayer(this);
+		playerController1 = GetComponent<PlayerController1>();
         playerSkills = new PlayerSkills();
 		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
     }
 
-
-    public void SetLevelSystem(LevelSystem levelSystem)
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+        ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
+        if(itemWorld != null)
+        {
+            inventory.AddItem(itemWorld.GetItem());
+            itemWorld.DestroySelf();
+        }
+	}
+	public void SetLevelSystem(LevelSystem levelSystem)
     {
         this.levelSystem = levelSystem;
 
@@ -93,6 +106,11 @@ public class Player : MonoBehaviour
     //{
     //    return playerSkills.isSkillUnlocked(PlayerSkills.SkillType.skill1);
     //}
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
 
     private void SetHealthAmountMax(int amount)
     {
