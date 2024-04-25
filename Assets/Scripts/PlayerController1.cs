@@ -10,7 +10,8 @@ public class PlayerController1 : MonoBehaviour
     public int health;
     public int damage = 10;
 
-  
+
+    Animator animator;
 
     [SerializeField] private float moveSpeed = 5f;
 
@@ -27,6 +28,7 @@ public class PlayerController1 : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -39,13 +41,14 @@ public class PlayerController1 : MonoBehaviour
     private void Update()
     {
         Dash();
-
+        Panimation();
     }
 
     private void FixedUpdate()
     {
         Move();
         Flip();
+      
     }
 
     private void OnMove(InputValue value)
@@ -54,7 +57,7 @@ public class PlayerController1 : MonoBehaviour
     }
     private void Move()
     {
-        rb.velocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed );
+        rb.velocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
     }
     private void Flip()
     {
@@ -62,8 +65,20 @@ public class PlayerController1 : MonoBehaviour
         if (havemove)
         {
 
-           mySpriteRender.transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f); // sign lay dau cua so ( velocity) bo vao scale 
-        }      
+            mySpriteRender.transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f); // sign lay dau cua so ( velocity) bo vao scale 
+        }
+    }
+    void Panimation()
+    {
+        if (movement.x != 0|| movement.y != 0)
+        {
+           
+            animator.SetBool("isRunning",true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
     }
     void Dash()
     {

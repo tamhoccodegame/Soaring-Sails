@@ -101,15 +101,15 @@ public class Weapon1 : MonoBehaviour
           }
     }
 
-     
+
 
     private void MouseFollowWithOffset()
-    {   
+    {
         Vector3 mouseP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookdir = mouseP - activeWeapon.transform.position;
         float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
         activeWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
-
+       
         weaponCollider.transform.rotation = Quaternion.Euler(0, 0, angle);
 
     }
