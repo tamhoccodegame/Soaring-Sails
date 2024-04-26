@@ -10,6 +10,7 @@ public class Item
         Weapon,
         Coin,
         Medkit,
+        Stick,
     }
 
     public ItemType itemType;
@@ -23,6 +24,7 @@ public class Item
             case ItemType.Weapon:         return ItemAssets.Instance.weaponSprite;
             case ItemType.Coin:           return ItemAssets.Instance.coinSprite;
             case ItemType.Medkit:         return ItemAssets.Instance.medkitSprite;
+            case ItemType.Stick:          return ItemAssets.Instance.stickSprite;
         }
     }
 
@@ -33,6 +35,7 @@ public class Item
             default:
             case ItemType.Coin:
             case ItemType.Medkit: 
+            case ItemType.Stick:
                 return true;
             case ItemType.Weapon: 
                 return false;

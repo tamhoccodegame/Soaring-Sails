@@ -7,17 +7,20 @@ public class Player : MonoBehaviour
     private PlayerSkills playerSkills;
     private PlayerController1 playerController1;
     private LevelSystem levelSystem;
-    private Inventory inventory;
+    public Inventory inventory;
 
     [SerializeField] private UI_Inventory uiInventory;
+    [SerializeField] private CraftingSystem craftingSystem;
 
     public ParticleSystem Dust;
+
 	void Start()
     {
-		inventory = new Inventory();
-		uiInventory.SetInventory(inventory);
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
         uiInventory.SetPlayer(this);
-		playerController1 = GetComponent<PlayerController1>();
+        craftingSystem.SetInventory(inventory);
+        playerController1 = GetComponent<PlayerController1>();
         playerSkills = new PlayerSkills();
 		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
     }
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
             itemWorld.DestroySelf();
         }
 	}
+    
 	public void SetLevelSystem(LevelSystem levelSystem)
     {
         this.levelSystem = levelSystem;

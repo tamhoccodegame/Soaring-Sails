@@ -26,9 +26,9 @@ public class UI_Inventory : MonoBehaviour
 	public void SetInventory(Inventory inventory)
     {
 		this.inventory = inventory;
-        RefreshInventoryItems();
+		RefreshInventoryItems();
 
-		
+
 		inventory.OnInventoryChange += Inventory_OnInventoryChange;
 	}
 
@@ -39,7 +39,7 @@ public class UI_Inventory : MonoBehaviour
 
 	private void RefreshInventoryItems()
     {
-		foreach(Transform child in itemSlotContainer)
+		foreach (Transform child in itemSlotContainer)
 		{
 			if (child == itemSlotTemplate) continue;
 			Destroy(child.gameObject);
@@ -49,7 +49,9 @@ public class UI_Inventory : MonoBehaviour
 		int y = 0;
 		float itemSlotCellSize = 67f;
 		foreach(Item item in inventory.GetItemList())
-		{
+		{ 
+		
+
 			RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
 			itemSlotRectTransform.gameObject.SetActive(true);
 

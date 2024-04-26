@@ -16,6 +16,7 @@ public class Inventory
 
         AddItem(new Item { itemType = Item.ItemType.Weapon, amount = 1 });
 		AddItem(new Item { itemType = Item.ItemType.Medkit, amount = 1 });
+		AddItem(new Item { itemType = Item.ItemType.Stick, amount = 10 });
 	}
 
 	public void AddItem(Item item)
@@ -57,7 +58,7 @@ public class Inventory
 			Item itemInInventory = null;
 			foreach (Item inventoryItem in itemList)
 			{
-				if (item.itemType == inventoryItem.itemType)
+				if (inventoryItem.itemType == item.itemType)
 				{
 					inventoryItem.amount -= item.amount;
 					itemInInventory = inventoryItem;
@@ -66,7 +67,8 @@ public class Inventory
 
 			if (itemInInventory != null && itemInInventory.amount <= 0)
 			{
-				itemList.Remove(item);
+				Debug.Log(item.itemType.ToString());
+				itemList.Remove(itemInInventory);
 			}
 		}
 		else
