@@ -296,7 +296,7 @@ Transform:
   m_GameObject: {fileID: 1915835934}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.47, y: -1.5, z: 0}
+  m_LocalPosition: {x: 1.3, y: -1.22, z: 0}
   m_LocalScale: {x: -1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -398,11 +398,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3170315977476086828, guid: 0d1f031792ce21240b0fc4fc78cc5279, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.02
+      value: -7.84
       objectReference: {fileID: 0}
     - target: {fileID: 3170315977476086828, guid: 0d1f031792ce21240b0fc4fc78cc5279, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3170315977476086828, guid: 0d1f031792ce21240b0fc4fc78cc5279, type: 3}
       propertyPath: m_LocalPosition.z
@@ -440,6 +440,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyBichRac
       objectReference: {fileID: 0}
+    - target: {fileID: 8853865503197968833, guid: 0d1f031792ce21240b0fc4fc78cc5279, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -455,11 +459,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2644481830815792749, guid: 126276e1d66bd3d43b0e243f80dd0b96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -0.55
       objectReference: {fileID: 0}
     - target: {fileID: 2644481830815792749, guid: 126276e1d66bd3d43b0e243f80dd0b96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.17
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2644481830815792749, guid: 126276e1d66bd3d43b0e243f80dd0b96, type: 3}
       propertyPath: m_LocalPosition.z
@@ -497,6 +501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyLyNuoc
       objectReference: {fileID: 0}
+    - target: {fileID: 6097572782810869701, guid: 126276e1d66bd3d43b0e243f80dd0b96, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -512,11 +520,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2376384873222631820, guid: 4b5023571c56890439bf7504d57c9cf3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.28
+      value: -0.77
       objectReference: {fileID: 0}
     - target: {fileID: 2376384873222631820, guid: 4b5023571c56890439bf7504d57c9cf3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: 1.53
       objectReference: {fileID: 0}
     - target: {fileID: 2376384873222631820, guid: 4b5023571c56890439bf7504d57c9cf3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -554,6 +562,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHopGiay
       objectReference: {fileID: 0}
+    - target: {fileID: 2561170875178480414, guid: 4b5023571c56890439bf7504d57c9cf3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -569,11 +581,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2819679871824297988, guid: ba88a28ee503f984c9ab2229761d9323, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.42
+      value: -1.87
       objectReference: {fileID: 0}
     - target: {fileID: 2819679871824297988, guid: ba88a28ee503f984c9ab2229761d9323, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.24
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 2819679871824297988, guid: ba88a28ee503f984c9ab2229761d9323, type: 3}
       propertyPath: m_LocalPosition.z
@@ -610,6 +622,10 @@ PrefabInstance:
     - target: {fileID: 5074048072113569723, guid: ba88a28ee503f984c9ab2229761d9323, type: 3}
       propertyPath: m_Name
       value: BossThungRac
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074048072113569723, guid: ba88a28ee503f984c9ab2229761d9323, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

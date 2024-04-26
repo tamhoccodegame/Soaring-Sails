@@ -100,13 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227d7f7b82fb58f40a25695807153adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 50
   speed: 1
-  damageMin: 0
-  damageMax: 0
+  damageMin: 2
+  damageMax: 4
   attackRadius: 1
   nextAttackTimer: 1
-  exp: 0
+  exp: 25
 --- !u!50 &6267089693179348426
 Rigidbody2D:
   serializedVersion: 4
