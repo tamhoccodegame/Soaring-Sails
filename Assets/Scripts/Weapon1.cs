@@ -1,10 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Weapon1 : MonoBehaviour
 {
-    
+
     [SerializeField] private GameObject slashAnimPrefab;
     [SerializeField] private Transform slashAnimSpawnPoint;
 
@@ -13,19 +16,20 @@ public class Weapon1 : MonoBehaviour
     private PlayerController1 playerController;
     [SerializeField] private Transform weaponCollider;
 
+    public GameObject WeaponCollider;
     public SpriteRenderer SlashRenderer;
 
     private GameObject slashAnim;
+    
 
     private void Awake()
     {
         playerController = GetComponentInParent<PlayerController1>();
-        activeWeapon = GetComponentInParent<ActiveWeapon>();      
+        activeWeapon = GetComponentInParent<ActiveWeapon>();
         playerControls = new PlayerControls();
     }
     void Start()
-    {      
-        playerControls.Combat.Attack.started += _ => Attack();
+    {
 
     }
 
@@ -41,51 +45,73 @@ public class Weapon1 : MonoBehaviour
         MouseFollowWithOffset();
         FlipAmim();
     }
-    void Attack()
+
+
+    public void Satk()
+    {
+
+        WeaponCollider.SetActive(true);
+    }
+    public void Eatk()
+    {     
+            WeaponCollider.SetActive(false);        
+    }
+    public void Attack()
     {
         slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
         slashAnim.transform.parent = this.transform.parent;
        
     }
 
-      private void FlipAmim()
-      {
-         if (playerController.mySpriteRender.flipX == true)
-          {
-              SlashRenderer.flipX = true;
-          }
-          if (playerController.mySpriteRender.flipX == false)
-          {
-              SlashRenderer.flipX = false;
-          }
-      }
-    
-    public void MouseFollowWithOffset()
+    private void FlipAmim()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(playerController.transform.position);
-
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-
-        if (mousePos.x < playerScreenPoint.x)
+        Vector3 mouseP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 lookdir = mouseP - activeWeapon.transform.position;
+        float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
+        SlashRenderer.transform.rotation = Quaternion.Euler(0, 0, angle);
+        if (angle > -45)
         {
-
-
-
-            if (activeWeapon != null)
-            {
-                Debug.Log("haha");
-                activeWeapon.transform.rotation = Quaternion.Euler(0, -180, angle);
-                weaponCollider.transform.rotation = Quaternion.Euler(0, -180, 0);
-            }
-        }
-        else
+            SlashRenderer.flipY = false;
+            SlashRenderer.flipX = false;
+        } 
+        if (angle < 45)
         {
-            if (activeWeapon != null)
-            {
-                activeWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
-                weaponCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
+            SlashRenderer.flipY = false;
+            SlashRenderer.flipX = false;
         }
+        if (angle > 135)
+        {
+            SlashRenderer.flipX = true;
+            SlashRenderer.flipY = false;
+        } 
+        if(angle < -135)
+        {
+            SlashRenderer.flipX = true;
+            SlashRenderer.flipY = false;
+        }
+
+
+        if (angle > 45 && angle < 135)
+          {
+              SlashRenderer.flipY = true;
+          }
+          else if (angle < -45 && angle > -135)
+          {
+              SlashRenderer.flipY = false;
+          }
     }
+
+
+
+    private void MouseFollowWithOffset()
+    {
+        Vector3 mouseP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 lookdir = mouseP - activeWeapon.transform.position;
+        float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
+        activeWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
+       
+        weaponCollider.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+    }
+
 }

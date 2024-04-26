@@ -14,7 +14,7 @@ public class PlayerSkills
 		public SkillType skillType;
 	}
 
-   public enum SkillType
+	public enum SkillType
 	{
 		None,
 		skill1,
@@ -57,7 +57,7 @@ public class PlayerSkills
 			unlockedSkillTypeList.Add(skillType);
 			OnSkillUnlocked?.Invoke(this, new OnSkillUnlockedEvenetArgs { skillType = skillType });
 		}
-		
+
 	}
 
 	public bool IsSkillUnlocked(SkillType skillType)
@@ -79,7 +79,7 @@ public class PlayerSkills
 				}
 				else
 				{
-					Debug.Log("Upgrade " +  skillRequirement + " first");
+					Debug.Log("Upgrade " + skillRequirement + " first");
 					return false;
 				}
 			}
@@ -92,19 +92,19 @@ public class PlayerSkills
 		{
 			return false;
 		}
-		
+
 	}
 
 	public SkillType GetSkillRequirement(SkillType skillType)
 	{
 		switch (skillType)
 		{
-			case SkillType.HealthMax_3:			return SkillType.HealthMax_2;
-			case SkillType.HealthMax_2:			return SkillType.HealthMax_1;
-			case SkillType.Damage_3:			return SkillType.Damage_2;
-			case SkillType.Damage_2:			return SkillType.Damage_1;
-			case SkillType.MovementSpeed_3 :	return SkillType.MovementSpeed_2;
-			case SkillType.MovementSpeed_2:		return SkillType.MovementSpeed_1;
+			case SkillType.HealthMax_3: return SkillType.HealthMax_2;
+			case SkillType.HealthMax_2: return SkillType.HealthMax_1;
+			case SkillType.Damage_3: return SkillType.Damage_2;
+			case SkillType.Damage_2: return SkillType.Damage_1;
+			case SkillType.MovementSpeed_3: return SkillType.MovementSpeed_2;
+			case SkillType.MovementSpeed_2: return SkillType.MovementSpeed_1;
 		}
 		return SkillType.None;
 	}
@@ -114,7 +114,7 @@ public class PlayerSkills
 		SkillType skillRequirement = GetSkillRequirement(skillType);
 		if (CanUnlock(skillType))
 		{
-			if(skillPoints > 0)
+			if (skillPoints > 0)
 			{
 				skillPoints--;
 				UnlockSkill(skillType);
@@ -125,7 +125,7 @@ public class PlayerSkills
 			{
 				return false;
 			}
-			
+
 		}
 		else
 		{

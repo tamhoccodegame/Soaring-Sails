@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using UnityEngine.InputSystem;
+
 
 public class PlayerController1 : MonoBehaviour
 {
-  
+    public int health;
+    public int damage = 10;
+
+
+    Animator animator;
 
     [SerializeField] private float moveSpeed = 5f;
 
@@ -14,8 +20,15 @@ public class PlayerController1 : MonoBehaviour
     private Rigidbody2D rb;
     public SpriteRenderer mySpriteRender;
 
+    // Skill dash //   
+    [SerializeField] float dashBoots = 15f;
+    [SerializeField] float dashTime1 = 0.25f;
+    public float dashTime2;
+    bool onceDash = false;
+
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -27,40 +40,79 @@ public class PlayerController1 : MonoBehaviour
 
     private void Update()
     {
-        PlayerInput();
-
+        Dash();
+        Panimation();
     }
 
     private void FixedUpdate()
     {
         Move();
-        AdjustPlayerFacingDirection();
+        Flip();
+      
     }
 
-    private void PlayerInput()
+    private void OnMove(InputValue value)
     {
-        movement = playerControls.Movement.Move.ReadValue<Vector2>();
+        movement = value.Get<Vector2>();
     }
     private void Move()
     {
-        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
+        rb.velocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
     }
-    private void AdjustPlayerFacingDirection()
+    private void Flip()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-
-        if (mousePos.x < playerScreenPoint.x)
+        bool havemove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        if (havemove)
         {
-            mySpriteRender.flipX = true;
-        
+
+            mySpriteRender.transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f); // sign lay dau cua so ( velocity) bo vao scale 
+        }
+    }
+    void Panimation()
+    {
+        if (movement.x != 0|| movement.y != 0)
+        {
+           
+            animator.SetBool("isRunning",true);
         }
         else
         {
-            mySpriteRender.flipX = false;
-
-         
+            animator.SetBool("isRunning", false);
         }
+    }
+    void Dash()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && dashTime2 < -1)
+        {
+            moveSpeed += dashBoots;
+            dashTime2 = dashTime1;
+            onceDash = true;
+        }
+        if (onceDash && dashTime2 <= 0)
+        {
+            moveSpeed -= dashBoots;
+            onceDash = false;
+        }
+
+        else
+        {
+            dashTime2 -= Time.deltaTime;
+        }         
+        }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log(health);
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Die");
+        Destroy(gameObject);
     }
 
     public void SetPlayerSpeed(float speed)
@@ -68,3 +120,4 @@ public class PlayerController1 : MonoBehaviour
         moveSpeed = speed;
     }
 }
+
