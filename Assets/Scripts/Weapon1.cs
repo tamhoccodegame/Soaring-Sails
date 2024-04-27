@@ -19,7 +19,7 @@ public class Weapon1 : MonoBehaviour
     public GameObject WeaponCollider;
     public SpriteRenderer SlashRenderer;
 
-    private GameObject slashAnim;
+    public GameObject slashAnim;
     
 
     private void Awake()
@@ -111,7 +111,18 @@ public class Weapon1 : MonoBehaviour
         activeWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
        
         weaponCollider.transform.rotation = Quaternion.Euler(0, 0, angle);
-
+        if (angle > 90)
+        {
+            activeWeapon.transform.localScale = new Vector3(1, -1, 1);
+        }
+        else if (angle > -90)
+        {
+            activeWeapon.transform.localScale = new Vector3(1, 1, 1);
+        }
+        if (angle < -90)
+        {
+            activeWeapon.transform.localScale = new Vector3(1, -1, 1);
+        }
     }
 
 }
