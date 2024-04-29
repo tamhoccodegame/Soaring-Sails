@@ -13,7 +13,7 @@ public class PlayerController1 : MonoBehaviour
 
     Animator animator;
 
-    [SerializeField] private float moveSpeed = 5f;
+    public float moveSpeed = 5f;
 
     private PlayerControls playerControls;
     private Vector2 movement;
@@ -48,7 +48,7 @@ public class PlayerController1 : MonoBehaviour
     {
         Move();
         Flip();
-      
+
     }
 
     private void OnMove(InputValue value)
@@ -70,10 +70,10 @@ public class PlayerController1 : MonoBehaviour
     }
     void Panimation()
     {
-        if (movement.x != 0|| movement.y != 0)
+        if (movement.x != 0 || movement.y != 0)
         {
-           
-            animator.SetBool("isRunning",true);
+
+            animator.SetBool("isRunning", true);
         }
         else
         {
@@ -97,8 +97,8 @@ public class PlayerController1 : MonoBehaviour
         else
         {
             dashTime2 -= Time.deltaTime;
-        }         
         }
+    }
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -115,9 +115,6 @@ public class PlayerController1 : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetPlayerSpeed(float speed)
-    {
-        moveSpeed = speed;
-    }
+
 }
 

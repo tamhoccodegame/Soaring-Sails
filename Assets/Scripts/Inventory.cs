@@ -75,7 +75,6 @@ public class Inventory
 		{
 			itemList.Remove(item);
 		}
-
 		OnInventoryChange?.Invoke(this, EventArgs.Empty);
 	}
 

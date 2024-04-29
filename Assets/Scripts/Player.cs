@@ -4,24 +4,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private PlayerSkills playerSkills;
+    public PlayerSkills playerSkills;
     private PlayerController1 playerController1;
     private LevelSystem levelSystem;
-    public Inventory inventory;
+    private Inventory inventory;
+
+
+    public UI_StatPlayerTest ui_StatPlayerTest;
 
     [SerializeField] private UI_Inventory uiInventory;
+	[SerializeField] private UI_SkillTree uiSkillTree;
+	[SerializeField] private LevelBar levelBar;
+    [SerializeField] private Enemy enemy;
     [SerializeField] private CraftingSystem craftingSystem;
 
     public ParticleSystem Dust;
 
-	void Start()
+	private void Start()
     {
-        inventory = new Inventory();
+		playerSkills = new PlayerSkills();
+		inventory = new Inventory();
+
         uiInventory.SetInventory(inventory);
         uiInventory.SetPlayer(this);
+		uiSkillTree.SetPlayerSkills(playerSkills);
+		LevelSystem levelSystem = new LevelSystem();
+		levelBar.SetLevelSystem(levelSystem);
+		SetLevelSystem(levelSystem);
+
         craftingSystem.SetInventory(inventory);
         playerController1 = GetComponent<PlayerController1>();
-        playerSkills = new PlayerSkills();
+        
 		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
     }
 
@@ -35,6 +48,7 @@ public class Player : MonoBehaviour
         }
 	}
     
+  
 	public void SetLevelSystem(LevelSystem levelSystem)
     {
         this.levelSystem = levelSystem;
@@ -42,9 +56,20 @@ public class Player : MonoBehaviour
 		levelSystem.OnLevelChanged += LevelSystem_OnLevelChanged;
     }
 
+    public LevelSystem GetLevelSystem()
+    {
+        return levelSystem;
+    }
+
+	public void AddExperienceFromEnemy(int amount)
+	{
+		levelSystem.AddExperience(amount);
+	}
+
 	private void LevelSystem_OnLevelChanged(object sender, System.EventArgs e)
 	{
         Dust.Play();
+        playerSkills.AddSkillPoint(); 
 	}
 
 	private void PlayerSkills_OnSkillUnlocked(object sender, PlayerSkills.OnSkillUnlockedEvenetArgs e)
@@ -53,7 +78,6 @@ public class Player : MonoBehaviour
         {
             case PlayerSkills.SkillType.HealthMax_1:
                 SetHealthAmountMax(110);
-                Debug.Log("New health = 110");
                 break;
             case PlayerSkills.SkillType.HealthMax_2:
                 SetHealthAmountMax(120);
@@ -62,13 +86,13 @@ public class Player : MonoBehaviour
 				SetHealthAmountMax(140);
 				break;
 			case PlayerSkills.SkillType.MovementSpeed_1:
-                SetMovementSpeed(10);
+                SetMovementSpeed(6);
 				break;
 			case PlayerSkills.SkillType.MovementSpeed_2:
-				SetMovementSpeed(15);
+				SetMovementSpeed(7);
 				break;
 			case PlayerSkills.SkillType.MovementSpeed_3:
-				SetMovementSpeed(20);
+				SetMovementSpeed(9);
 				break;
 
 			case PlayerSkills.SkillType.Damage_1:
@@ -76,14 +100,15 @@ public class Player : MonoBehaviour
 				break;
 
 			case PlayerSkills.SkillType.Damage_2:
-				SetDamage(30);
+				SetDamage(35);
 				break;
 
 			case PlayerSkills.SkillType.Damage_3:
-				SetDamage(30);
+				SetDamage(45);
 				break;
 
 		}
+        ui_StatPlayerTest.UpdateStatText();
 	}
 
 	// Update is called once per frame
@@ -118,16 +143,16 @@ public class Player : MonoBehaviour
 
     private void SetHealthAmountMax(int amount)
     {
-
+        playerController1.health = amount;
     }
 
     private void SetMovementSpeed(float speed)
     {
-        playerController1.SetPlayerSpeed(speed);
+        playerController1.moveSpeed = speed;
     }
 
     private void SetDamage(int damage)
     {
-
+        playerController1.damage = damage;
     }
 }

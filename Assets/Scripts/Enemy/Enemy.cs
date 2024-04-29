@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     protected EnemyState currentState = EnemyState.run;
     protected Animator anim;
     private float scale;
+    protected ParticleSystem deadEffect;
 
     private void Awake()
     {
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         FlipTowardsPlayer();
-        anim.SetTrigger("Run");
+       // anim.SetTrigger("Run");
         if (player != null && player.activeSelf)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
@@ -92,11 +93,11 @@ public class Enemy : MonoBehaviour
 
     private void AttackPlayer()
     {
-        anim.SetTrigger("Attack");
+       // anim.SetTrigger("Attack");
         if (Time.time > tempTime + nextAttackTimer)
         {
             Debug.Log("Attack");
-            player.GetComponent<PlayerTest>().TakeDamage(RandomDamage(damageMin, damageMax));
+            player.GetComponent<PlayerController1>().TakeDamage(RandomDamage(damageMin, damageMax));
             tempTime = Time.time;
         }
     }
@@ -116,14 +117,19 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            Die();
+            Die(); 
         }
     }
 
-    private void Die()
+    void Die()
     {
-        Destroy(gameObject);
-    }
+        //deadEffect.Play();
+        player.GetComponent<Player>().AddExperienceFromEnemy(exp);
+        //yield return new WaitForSeconds(.3f); 
+        ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Coin, amount = Random.Range(20, 15) });
+        ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Stick, amount = 1 });
+		Destroy(gameObject);
+	}
 
     private void FlipTowardsPlayer()
     {
@@ -150,5 +156,6 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
+
 }
 

@@ -8,10 +8,7 @@ public class SlashAnim : MonoBehaviour
     private void Start()
     {
         weapon = GameObject.Find("Player");
-        if (weapon == null)
-        {
-            Debug.LogError("deo thay");
-        }
+        
     }
     void Satk()
     {

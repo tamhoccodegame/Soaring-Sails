@@ -9,13 +9,13 @@ using CodeMonkey.Utils;
 public class LevelBar : MonoBehaviour
 {
     private TextMeshProUGUI levelText;
-    private Image experienceBarSlider;
+    private Slider experienceBarSlider;
 	private LevelSystem levelSystem;
 
 	private void Awake()
 	{
 		levelText = transform.Find("levelText").GetComponent<TextMeshProUGUI>();
-		experienceBarSlider = transform.Find("ExpBar").Find("Fill").GetComponent<Image>();
+		experienceBarSlider = transform.Find("ExpBar").GetComponent<Slider>();
 	
 		transform.Find("experience500").GetComponent<Button_UI>().ClickFunc = () => levelSystem.AddExperience(500);
 
@@ -23,12 +23,12 @@ public class LevelBar : MonoBehaviour
 
 	private void SetExperienceBarSize(float experienceNormalized)
 	{
-		experienceBarSlider.fillAmount = experienceNormalized;
+		experienceBarSlider.value = experienceNormalized;
 	}
 
 	private void SetLevelNumber(int levelNumber)
 	{
-		levelText.text = "LEVEL " + (levelNumber + 1);
+		levelText.text = (levelNumber + 1).ToString();
 	}
 
 	

@@ -12,12 +12,13 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
 	private Player player;
+
+
 	private void Awake()
 	{
-		itemSlotTemplate = transform.Find("Slots").Find("SlotTemplate");
 		itemSlotContainer = transform.Find("Slots");
+		itemSlotTemplate = transform.Find("Slots").Find("SlotTemplate"); 
 	}
-
 	public void SetPlayer(Player player)
 	{
 		this.player = player;
@@ -27,7 +28,6 @@ public class UI_Inventory : MonoBehaviour
     {
 		this.inventory = inventory;
 		RefreshInventoryItems();
-
 
 		inventory.OnInventoryChange += Inventory_OnInventoryChange;
 	}
@@ -39,32 +39,33 @@ public class UI_Inventory : MonoBehaviour
 
 	private void RefreshInventoryItems()
     {
+			
 		foreach (Transform child in itemSlotContainer)
 		{
 			if (child == itemSlotTemplate) continue;
 			Destroy(child.gameObject);
 		}
-
+		
 		int x = 0;
 		int y = 0;
 		float itemSlotCellSize = 67f;
 		foreach(Item item in inventory.GetItemList())
-		{ 
-		
-
+		{
+			
 			RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
 			itemSlotRectTransform.gameObject.SetActive(true);
 
 			itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () =>
 			{
 				//Use item
+				
 			};
 			itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () =>
 			{
 				//Drop item
 				Item duplicateItem = new Item{ itemType = item.itemType, amount = item.amount };
 				inventory.RemoveItem(item);
-				ItemWorld.DropItem(player.GetPosition(),duplicateItem);
+				//ItemWorld.DropItem(player.GetPosition(),duplicateItem);
 			};
 
 

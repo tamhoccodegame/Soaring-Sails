@@ -5,44 +5,51 @@ using UnityEngine.Accessibility;
 
 public class DameSource : MonoBehaviour
 {
-    private GameObject enemy;
+    
     private GameObject player;
     int damage ;
 
     private void Awake()
     {
         player = GameObject.Find("Player");
-        
-        enemy = GameObject.FindWithTag("Enemy");
-        if (enemy == null)
-        {
-            Debug.LogError("Không tìm thấy đối tượng Enemy!");
-        }
-       
        
     }
     private void Start()
     {
-        
         damage = player.GetComponent<PlayerController1>().damage;
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if ((other.GetComponent<Enemy>()))
-        {
-            Debug.Log("cham");
-            AttackEnemy();
-        }
-    }
-    private void AttackEnemy()
-    {
-        if (enemy != null)
-        {
-            enemy.GetComponent<Enemy>().TakeDamage(damage);
-        }
-       
-        
 
+	
+	private void OnTriggerEnter2D(Collider2D other)
+    {
+        //Enemy enemy = other.GetComponent<Enemy>();
+        // if (enemy != null)
+        // {
+        //     enemy.TakeDamage(damage);
+        // }
+        Debug.Log("Ok men");
+        TraceDamage(damage);
     }
-   
+
+    private void TraceDamage(int damage)
+    {
+		List<Collider2D> hitEnemies = new List<Collider2D>();
+        ContactFilter2D filter = new ContactFilter2D();
+
+        filter.SetLayerMask(LayerMask.GetMask("Enemy"));
+        filter.useLayerMask = true;
+
+		int numCollider = Physics2D.OverlapCollider(GetComponent<Collider2D>(), filter , hitEnemies);
+
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            if(enemy != null)
+            { 
+                enemy.GetComponent<Enemy>().TakeDamage(damage);
+            }
+            
+        }
+	}
 }
+ 
+   

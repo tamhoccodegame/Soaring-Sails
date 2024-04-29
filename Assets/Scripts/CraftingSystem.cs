@@ -32,7 +32,7 @@ public class CraftingSystem : MonoBehaviour
 
 
 
-    public void ShowIngredients(Item ingredients, Item result)
+    public void ShowIngredients(List<Item> ingredients, Item result)
     {
 
         foreach(Transform child in ingredientSlotContainer)
@@ -47,49 +47,62 @@ public class CraftingSystem : MonoBehaviour
             }
         }
 
-       
 
-        RectTransform ingredientRectTransform = Instantiate(ingredientSlotTemplate, ingredientSlotContainer).GetComponent<RectTransform>();
-        ingredientRectTransform.anchoredPosition = Vector2.zero;
-		ingredientRectTransform.gameObject.SetActive(true);
 
-		
-
-		Image image = ingredientRectTransform.Find("Image").GetComponent<Image>();
-        image.sprite = ingredients.GetSprite();
-
-        TextMeshProUGUI amountText = ingredientRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();    
-        if(ingredients.amount > 1)
+        foreach (Item ingredient in ingredients)
         {
-            amountText.SetText(ingredients.amount.ToString());
-        }
-        else
-        {
-            amountText.SetText("");
-        }
 
-		foreach (Item item in inventory.GetItemList())
-        {
-            transform.Find("CraftBtn").GetComponent<Button_UI>().ClickFunc = () =>
-			{
-                if (ingredients.itemType == item.itemType)
-                {
-                    if (item.amount - ingredients.amount <= 0)
+
+
+            RectTransform ingredientRectTransform = Instantiate(ingredientSlotTemplate, ingredientSlotContainer).GetComponent<RectTransform>();
+            ingredientRectTransform.anchoredPosition = Vector2.zero;
+            ingredientRectTransform.gameObject.SetActive(true);
+
+
+
+            Image image = ingredientRectTransform.Find("Image").GetComponent<Image>();
+            image.sprite = ingredient.GetSprite();
+
+            TextMeshProUGUI amountText = ingredientRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
+
+
+            if (ingredient.amount > 1)
+            {
+                amountText.SetText(ingredient.amount.ToString());
+            }
+            else
+            {
+                amountText.SetText("");
+            }
+
+
+
+            foreach (Item item in inventory.GetItemList())
+            {
+                
+                    if (ingredient.itemType == item.itemType)
+                    {
+                        if (item.amount - ingredient.amount <= 0)
+                        {
+                            amountText.color = Color.red;
+                        }
+                        
+                    }
+                    else
                     {
                         amountText.color = Color.red;
                     }
-                    if(item.amount >= ingredients.amount)
-                    {
-                        inventory.AddItem(result);
-                        inventory.RemoveItem(ingredients);
-                    }
-                }
-                else
-                {
-                    amountText.color = Color.red;
-                }
-						
-			};
+
+				transform.Find("CraftBtn").GetComponent<Button_UI>().ClickFunc = () =>
+				{
+					if (item.amount >= ingredient.amount)
+					{
+						inventory.AddItem(result);
+						inventory.RemoveItem(ingredient);
+					}
+				};
+
+			}
 		}
             
            

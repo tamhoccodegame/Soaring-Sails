@@ -5,13 +5,20 @@ using UnityEngine;
 public class Recipe
 {
 	private string nameRecipe;
+	private List<Item> ingridientsList;
 
-	public Item GetIngridients(string nameRecipe)
+	public List<Item> GetIngridients(string nameRecipe)
 	{
 		switch(nameRecipe)
 		{
 			default:
-			case "Broom" : return new Item { itemType = Item.ItemType.Stick, amount = 2 };
+			case "Broom" :
+				{
+					ingridientsList = new List<Item>();
+					ingridientsList.Add(new Item{itemType = Item.ItemType.Stick, amount = 1 });
+					//ingridientsList.Add(new Item { itemType = Item.ItemType.Coin, amount = 20 });
+					return ingridientsList;
+				}
 
 		}
 	}

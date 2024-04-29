@@ -8,17 +8,16 @@ public class Testing : MonoBehaviour
 	[SerializeField] private UI_SkillTree uiSkillTree;
 	[SerializeField] private LevelBar levelBar;
 
-	private void Start()
+	private void Awake()
 	{
 		uiSkillTree.SetPlayerSkills(player.GetPlayerSkill());
+		LevelSystem levelSystem = new LevelSystem();
+		levelBar.SetLevelSystem(levelSystem);
+		player.SetLevelSystem(levelSystem);
+		
 
-		//LevelSystem levelSystem = new LevelSystem();
-		//levelBar.SetLevelSystem(levelSystem);
-		//player.SetLevelSystem(levelSystem);
-		//levelSystem.AddExperience(110);
-
-		ItemWorld.SpawnItemWorld(new Vector2(5,5), new Item { itemType = Item.ItemType.Weapon, amount = 1 });
-		ItemWorld.SpawnItemWorld(new Vector2(5, 6), new Item { itemType = Item.ItemType.Medkit, amount = 1 });
+		//ItemWorld.SpawnItemWorld(new Vector2(5,5), new Item { itemType = Item.ItemType.Weapon, amount = 1 });
+		//ItemWorld.SpawnItemWorld(new Vector2(5, 6), new Item { itemType = Item.ItemType.Medkit, amount = 1 });
 
 
 	}

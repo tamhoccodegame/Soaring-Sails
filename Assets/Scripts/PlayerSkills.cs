@@ -32,7 +32,7 @@ public class PlayerSkills
 	}
 
 	private List<SkillType> unlockedSkillTypeList;
-	private int skillPoints = 1000;
+	private int skillPoints = 0;
 
 	public PlayerSkills()
 	{
@@ -79,7 +79,7 @@ public class PlayerSkills
 				}
 				else
 				{
-					Debug.Log("Upgrade " + skillRequirement + " first");
+					//Debug.Log("Upgrade " + skillRequirement + " first");
 					return false;
 				}
 			}

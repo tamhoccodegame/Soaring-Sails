@@ -16,7 +16,7 @@ public class LevelSystem
     {
         level = 0;
         experience = 0;
-        experienceToNextLevel = 1000;
+        experienceToNextLevel = 100;
     }
 
     public void AddExperience(int amount)
@@ -25,16 +25,13 @@ public class LevelSystem
         while(experience >= experienceToNextLevel)
         {
             level++;
-            experience -= experienceToNextLevel; 
-            if(OnLevelChanged != null)
-            {
-                OnLevelChanged(this, EventArgs.Empty);
-            }
+            experience -= experienceToNextLevel;
+            experienceToNextLevel *= 2;
+            OnLevelChanged?.Invoke(this, EventArgs.Empty);
         }
-		if (OnExperienceChanged != null)
-		{
-			OnExperienceChanged(this, EventArgs.Empty);
-		}
+		
+			OnExperienceChanged?.Invoke(this, EventArgs.Empty);
+		
 	}
 
     public int GetLevelNumber()

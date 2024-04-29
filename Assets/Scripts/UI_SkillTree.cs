@@ -17,17 +17,13 @@ public class UI_SkillTree : MonoBehaviour
 	private TextMeshProUGUI skillPointsText;
 	private void Awake()
 	{
-		
-	}
-
-	private void PlayerSkills_OnSkillPointChange(object sender, System.EventArgs e)
-	{
-		UpdateSkillPoints();
+		skillPointsText = transform.Find("PointText").GetComponent<TextMeshProUGUI>();
 	}
 
 	public void SetPlayerSkills(PlayerSkills playerSkills)
 	{
 		this.playerSkills = playerSkills;
+	
 
 		skillButtonList = new List<SkillButton>();
 		skillButtonList.Add(new SkillButton(transform.Find("HealthMax_1"), playerSkills, PlayerSkills.SkillType.HealthMax_1, skillUnlockableMaterial, skillLockedMaterial));
@@ -39,15 +35,21 @@ public class UI_SkillTree : MonoBehaviour
 		skillButtonList.Add(new SkillButton(transform.Find("Damage_1"), playerSkills, PlayerSkills.SkillType.Damage_1, skillUnlockableMaterial, skillLockedMaterial));
 		skillButtonList.Add(new SkillButton(transform.Find("Damage_2"), playerSkills, PlayerSkills.SkillType.Damage_2, skillUnlockableMaterial, skillLockedMaterial));
 		skillButtonList.Add(new SkillButton(transform.Find("Damage_3"), playerSkills, PlayerSkills.SkillType.Damage_3, skillUnlockableMaterial, skillLockedMaterial));
-
-		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
-		playerSkills.OnSkillPointChange += PlayerSkills_OnSkillPointChange;
+		
+		
+		this.playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
+		this.playerSkills.OnSkillPointChange += PlayerSkills_OnSkillPointChange;
 		UpdateVisuals();
+		UpdateSkillPoints();
 	}
 
 	private void PlayerSkills_OnSkillUnlocked(object sender, PlayerSkills.OnSkillUnlockedEvenetArgs e)
 	{
 		UpdateVisuals();
+	}
+	private void PlayerSkills_OnSkillPointChange(object sender, System.EventArgs e)
+	{
+		UpdateSkillPoints();
 	}
 
 	private void UpdateVisuals()
@@ -98,6 +100,7 @@ public class UI_SkillTree : MonoBehaviour
 	{
 		private Transform transform;
 		private Image image;
+		private Image background;
 		private PlayerSkills playerSkills;
 		private PlayerSkills.SkillType skillType;
 		private Material skillUnlockableMaterial;
@@ -109,7 +112,7 @@ public class UI_SkillTree : MonoBehaviour
 			this.playerSkills = playerSkills;
 			this.skillType = skillType;
 			this.image = transform.Find("Image").GetComponent<Image>();
-
+			this.background = transform.Find("Background").GetComponent<Image>();
 			transform.GetComponent<Button_UI>().ClickFunc = () =>
 			{
 				playerSkills.TryUnlockSkill(skillType);
@@ -121,16 +124,19 @@ public class UI_SkillTree : MonoBehaviour
 			if (playerSkills.IsSkillUnlocked(skillType))
 			{
 				image.color = Color.white;
+				background.color = Color.white;
 			}
 			else
 			{
 				if (playerSkills.CanUnlock(skillType))
 				{
 					image.color = new Color(.1f, .1f, .1f);
+					background.color = new Color(.5f, .5f, .5f);
 				}
 				else
 				{
 					image.color = Color.black;
+					background.color = new Color(.1f, .1f, .1f);
 				}
 			}
 		}
