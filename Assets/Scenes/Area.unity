@@ -12925,6 +12925,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8634150528547812977, guid: 0d1f031792ce21240b0fc4fc78cc5279, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8853865503197968833, guid: 0d1f031792ce21240b0fc4fc78cc5279, type: 3}
       propertyPath: m_Name
       value: EnemyBichRac (1)
