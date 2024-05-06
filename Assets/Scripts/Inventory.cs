@@ -7,6 +7,21 @@ using UnityEngine.EventSystems;
 public class Inventory
 {
     public event EventHandler OnInventoryChange;
+	public event EventHandler<OnItemUsedEventArgs> OnItemUsed;
+	public class OnItemUsedEventArgs : EventArgs
+	{
+		public int plusHealth;
+		public OnItemUsedEventArgs(int plusHealth)
+		{
+			this.plusHealth = plusHealth;
+		}
+
+		public OnItemUsedEventArgs(int amount, Item.ItemType itemType)
+		{
+
+		}
+	}
+
     private List<Item> itemList;
 	private int maxAmount = 56;
 
@@ -78,6 +93,19 @@ public class Inventory
 		OnInventoryChange?.Invoke(this, EventArgs.Empty);
 	}
 
+	public void UseItem(Item item)
+	{
+		Item duplicateItem = new Item { itemType = item.itemType, amount = 1 };
+		RemoveItem(duplicateItem);
+
+		switch(item.itemType)
+		{
+			
+			case Item.ItemType.Medkit: OnItemUsed?.Invoke(this, new OnItemUsedEventArgs(50));
+				break;
+		}
+
+	}
 
 	public List<Item> GetItemList()
     {

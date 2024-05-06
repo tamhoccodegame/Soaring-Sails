@@ -20,10 +20,10 @@ public class Enemy : MonoBehaviour
     public float attackRadius { get; set; }
     public float nextAttackTimer { get; set; }
     public int exp {  get; set; }
-
+    AudioManager audioManager;
     protected GameObject player;
     private float tempTime = 0;
-    protected EnemyState currentState = EnemyState.run;
+    [SerializeField] protected EnemyState currentState = EnemyState.run;
     protected Animator anim;
     private float scale;
     protected ParticleSystem deadEffect;
@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("Player");
         anim = GetComponent<Animator>();
         scale = transform.localScale.x;
+        audioManager = GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -119,12 +120,13 @@ public class Enemy : MonoBehaviour
         {
             Die(); 
         }
+        audioManager.PlayAudioClip("enemyHitImpact"); 
     }
 
     void Die()
     {
         //deadEffect.Play();
-        player.GetComponent<Player>().AddExperienceFromEnemy(exp);
+        player.transform.Find("Character").GetComponent<Player>().AddExperienceFromEnemy(exp);
         //yield return new WaitForSeconds(.3f); 
         ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Coin, amount = Random.Range(20, 15) });
         ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Stick, amount = 1 });

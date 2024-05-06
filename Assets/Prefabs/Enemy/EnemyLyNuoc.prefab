@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8401376438705057537}
   - component: {fileID: 2766138208065883077}
   - component: {fileID: 5212006152015510573}
+  - component: {fileID: 8263053567252766187}
   m_Layer: 3
   m_Name: EnemyLyNuoc
   m_TagString: Enemy
@@ -160,7 +161,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: -1734936758, guid: 8b2e16847df2c43439162bc307e0b17b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -191,7 +192,6 @@ MonoBehaviour:
   attackRadius: 0.5
   nextAttackTimer: 1
   exp: 20
-  deadEffect: {fileID: 820990802274154739, guid: 6b7d0ad17d7cba54ca8bc788b53bfa07, type: 3}
 --- !u!50 &1718182850998381970
 Rigidbody2D:
   serializedVersion: 4
@@ -325,3 +325,15 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &8263053567252766187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097572782810869701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a74bfced4563649ac3afae04e87070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

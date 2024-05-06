@@ -11,7 +11,7 @@ public class UI_StatPlayerTest : MonoBehaviour
 	TextMeshProUGUI speedText;
 	TextMeshProUGUI damageText;
 
-	private void Start()
+	private void Awake()
 	{
 		healthText = transform.Find("HealthText").GetComponent<TextMeshProUGUI>();
 		speedText = transform.Find("SpeedText").GetComponent<TextMeshProUGUI>();

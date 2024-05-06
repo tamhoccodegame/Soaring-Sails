@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.InputSystem;
+using System;
+using CodeMonkey;
 
 
 public class PlayerController1 : MonoBehaviour
 {
+
+    public event EventHandler OnPlayerDie;
+
     public int health;
     public int damage = 10;
 
-
-    Animator animator;
+	Animator animator;
 
     public float moveSpeed = 5f;
 
@@ -31,9 +35,10 @@ public class PlayerController1 : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
-    }
 
-    private void OnEnable()
+	}
+
+	private void OnEnable()
     {
         playerControls.Enable();
     }
@@ -111,10 +116,10 @@ public class PlayerController1 : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Die");
-        Destroy(gameObject);
+        Time.timeScale = 0;
+        OnPlayerDie?.Invoke(this, EventArgs.Empty);
     }
-
+    
 
 }
 

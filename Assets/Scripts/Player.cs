@@ -15,15 +15,16 @@ public class Player : MonoBehaviour
     [SerializeField] private UI_Inventory uiInventory;
 	[SerializeField] private UI_SkillTree uiSkillTree;
 	[SerializeField] private LevelBar levelBar;
-    [SerializeField] private Enemy enemy;
     [SerializeField] private CraftingSystem craftingSystem;
 
     public ParticleSystem Dust;
+    AudioManager audioManager;
 
 	private void Start()
     {
 		playerSkills = new PlayerSkills();
 		inventory = new Inventory();
+		inventory.OnItemUsed += Inventory_OnItemUsed;
 
         uiInventory.SetInventory(inventory);
         uiInventory.SetPlayer(this);
@@ -33,10 +34,18 @@ public class Player : MonoBehaviour
 		SetLevelSystem(levelSystem);
 
         craftingSystem.SetInventory(inventory);
-        playerController1 = GetComponent<PlayerController1>();
+        playerController1 = GetComponentInParent<PlayerController1>();
         
 		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
-    }
+		audioManager = GetComponent<AudioManager>();
+
+	}
+
+	private void Inventory_OnItemUsed(object sender, Inventory.OnItemUsedEventArgs e)
+	{
+        playerController1.health += e.plusHealth;
+        Mathf.Clamp(playerController1.health, 0, 100);
+	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -69,6 +78,7 @@ public class Player : MonoBehaviour
 	private void LevelSystem_OnLevelChanged(object sender, System.EventArgs e)
 	{
         Dust.Play();
+        audioManager.PlayAudioClip("levelup");
         playerSkills.AddSkillPoint(); 
 	}
 
