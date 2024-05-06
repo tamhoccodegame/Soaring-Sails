@@ -512,6 +512,46 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &164360579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7919615406918074287, guid: f7194ad0545c70a4194620748ed377c2, type: 3}
+  m_PrefabInstance: {fileID: 499859593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &164360586
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164360579}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.18311861}
+  m_Size: {x: 0.99092263, y: 1.4872686}
+  m_Direction: 0
 --- !u!1 &239209622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,12 +1367,14 @@ PrefabInstance:
       propertyPath: InitialModule.gravityModifier.scalar
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3244764729122218567, guid: f7194ad0545c70a4194620748ed377c2, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5736248260243863504, guid: f7194ad0545c70a4194620748ed377c2, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7919615406918074287, guid: f7194ad0545c70a4194620748ed377c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 164360586}
   m_SourcePrefab: {fileID: 100100000, guid: f7194ad0545c70a4194620748ed377c2, type: 3}
 --- !u!1 &504081402
 GameObject:
