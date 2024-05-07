@@ -6,23 +6,30 @@ using UnityEngine.UI;
 public class UI_HPSP : MonoBehaviour
 {
     private Slider healthBar;
-    private Slider spBar;
+    private Slider cdBar;
 	[SerializeField] private PlayerController1 playerController1;
 
 	private void Start()
 	{
+		
 		healthBar = transform.Find("HealthBar").GetComponent<Slider>();
-		Transform tmp = transform.Find("SPBar");
-		if(tmp != null)
+
+		if(transform.Find("CDBar"))
 		{
-			spBar = tmp.GetComponent<Slider>();
+			cdBar = transform.Find("CDBar").GetComponent<Slider>();
 		}
 
+		
 	}
 
 	private void FixedUpdate()
 	{
+		Debug.Log(Mathf.Clamp((Mathf.Abs(playerController1.dashTime2)), 0f, 1f));
 		healthBar.value = (float) playerController1.health / 100;
-		if(spBar != null) spBar.value = .1f;
+		if(cdBar != null)
+		{
+			cdBar.value = (float)Mathf.Clamp((Mathf.Abs(playerController1.dashTime2)), 0f, 1f);
+		}
+		
 	}
 }

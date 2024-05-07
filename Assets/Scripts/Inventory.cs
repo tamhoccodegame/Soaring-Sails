@@ -8,6 +8,13 @@ public class Inventory
 {
     public event EventHandler OnInventoryChange;
 	public event EventHandler<OnItemUsedEventArgs> OnItemUsed;
+	public event EventHandler<OnWeaponEquippedEventArgs> OnWeaponEquipped;
+
+	public class OnWeaponEquippedEventArgs : EventArgs
+	{
+		public Item item;
+	}
+
 	public class OnItemUsedEventArgs : EventArgs
 	{
 		public int plusHealth;
@@ -100,8 +107,12 @@ public class Inventory
 
 		switch(item.itemType)
 		{
-			
-			case Item.ItemType.Medkit: OnItemUsed?.Invoke(this, new OnItemUsedEventArgs(50));
+			case Item.ItemType.Medkit: 
+				OnItemUsed?.Invoke(this, new OnItemUsedEventArgs(50));
+				break;
+
+			case Item.ItemType.Weapon:  
+				OnWeaponEquipped?.Invoke(this, new OnWeaponEquippedEventArgs {item = duplicateItem});
 				break;
 		}
 

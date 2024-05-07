@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 	[SerializeField] private UI_SkillTree uiSkillTree;
 	[SerializeField] private LevelBar levelBar;
     [SerializeField] private CraftingSystem craftingSystem;
+    [SerializeField] private Equipment equipment;
 
     public ParticleSystem Dust;
     AudioManager audioManager;
@@ -25,6 +26,10 @@ public class Player : MonoBehaviour
 		playerSkills = new PlayerSkills();
 		inventory = new Inventory();
 		inventory.OnItemUsed += Inventory_OnItemUsed;
+		inventory.OnWeaponEquipped += Inventory_OnWeaponEquipped;
+
+
+        equipment.SetInventory(inventory);
 
         uiInventory.SetInventory(inventory);
         uiInventory.SetPlayer(this);
@@ -39,6 +44,12 @@ public class Player : MonoBehaviour
 		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
 		audioManager = GetComponent<AudioManager>();
 
+	}
+
+	private void Inventory_OnWeaponEquipped(object sender, Inventory.OnWeaponEquippedEventArgs e)
+	{
+        SpriteRenderer spriteRenderer = transform.parent.Find("Active Weapon").Find("Weapon1").GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = e.item.GetSprite();
 	}
 
 	private void Inventory_OnItemUsed(object sender, Inventory.OnItemUsedEventArgs e)
