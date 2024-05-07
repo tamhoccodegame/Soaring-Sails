@@ -850,6 +850,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2110226749263503843, guid: 1c7babd90b22bb441be8ba82dfae0a26, type: 3}
     - target: {fileID: 8381808226219777203, guid: f7194ad0545c70a4194620748ed377c2, type: 3}
+      propertyPath: atkSpeed
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381808226219777203, guid: f7194ad0545c70a4194620748ed377c2, type: 3}
       propertyPath: dashEffPre
       value: 
       objectReference: {fileID: 626175493538208534, guid: b81515eac894f64488fd85df20508307, type: 3}
@@ -39184,7 +39188,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.00018310547, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0

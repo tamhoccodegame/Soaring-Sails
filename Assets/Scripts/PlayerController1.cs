@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 using System;
 using CodeMonkey;
 using UnityEngine.XR;
-
-
 public class PlayerController1 : MonoBehaviour
 {
     
@@ -27,8 +25,6 @@ public class PlayerController1 : MonoBehaviour
     public SpriteRenderer mySpriteRender;
 
     // Skill dash //
-   
-
     [SerializeField] float dashBoots = 15f;
     [SerializeField] float dashTime1 = 0.25f;
     public float dashTime2;
@@ -127,6 +123,6 @@ public class PlayerController1 : MonoBehaviour
         OnPlayerDie?.Invoke(this, EventArgs.Empty);
     }
     
-
+    // HelloWorld
 }
 
