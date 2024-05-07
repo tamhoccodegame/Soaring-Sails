@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         FlipTowardsPlayer();
-       // anim.SetTrigger("Run");
+        anim.SetTrigger("Run");
         if (player != null && player.activeSelf)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
 
     private void AttackPlayer()
     {
-       // anim.SetTrigger("Attack");
+        anim.SetTrigger("Attack");
         if (Time.time > tempTime + nextAttackTimer)
         {
             Debug.Log("Attack");

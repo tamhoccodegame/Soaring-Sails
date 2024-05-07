@@ -190,7 +190,7 @@ MonoBehaviour:
   speed: 1.5
   damageMin: 3
   damageMax: 5
-  attackRadius: 0.5
+  attackRadius: 0.7
   nextAttackTimer: 1
   exp: 20
 --- !u!50 &1718182850998381970
