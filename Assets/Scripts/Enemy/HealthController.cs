@@ -12,12 +12,16 @@ public class HealthController : MonoBehaviour
     {
         healthSlider = GetComponent<Slider>();
         bossThungRac = GameObject.FindObjectOfType<BossThungRac>();
-        healthSlider.maxValue = bossThungRac.health;
-        healthSlider.value = bossThungRac.health;
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = bossThungRac.health;
+            healthSlider.value = bossThungRac.health;
+        }
     }
 
     private void Update()
     {
+        if(healthSlider != null)
         healthSlider.value = bossThungRac.health;
     }
 }
