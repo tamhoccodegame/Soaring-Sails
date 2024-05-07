@@ -11,6 +11,7 @@ public class UI_Inventory : MonoBehaviour
     private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
+	private Equipment equipment;
 	private Player player;
 
 
@@ -30,6 +31,11 @@ public class UI_Inventory : MonoBehaviour
 		RefreshInventoryItems();
 
 		inventory.OnInventoryChange += Inventory_OnInventoryChange;
+	}
+
+	public void SetEquipment(Equipment equipment)
+	{
+		this.equipment = equipment;
 	}
 
 	private void Inventory_OnInventoryChange(object sender, EventArgs e)
@@ -57,7 +63,16 @@ public class UI_Inventory : MonoBehaviour
 
 			itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () =>
 			{
-				inventory.UseItem(item);				
+				//EquipWeapon
+				if(item.itemType == Item.ItemType.Weapon)
+				{
+					equipment.EquipItem(item);
+				}		
+				else if(item.itemType != Item.ItemType.Stick)
+				{
+					inventory.UseItem(item);
+				}
+					
 			};
 			itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () =>
 			{

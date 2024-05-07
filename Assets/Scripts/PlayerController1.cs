@@ -101,7 +101,7 @@ public class PlayerController1 : MonoBehaviour
         }
         if (onceDash && dashTime2 <= 0)
         {
-            animator.SetBool("Dash", false);
+            //animator.SetBool("Dash", false);
             moveSpeed -= dashBoots;
             onceDash = false;
         }

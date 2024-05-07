@@ -6,7 +6,7 @@ public class Attack : MonoBehaviour
 {
     public Weapon1 weapon1;
     bool onceAtk = true;
-    float atkSpeed;
+    float atkSpeed = 1;
 
     
     
@@ -28,7 +28,7 @@ public class Attack : MonoBehaviour
     private IEnumerator DelayAtk(float atkSpeed)
     {    
         
-            weapon1.Attack();   
+        weapon1.Attack();   
         yield return new WaitForSeconds(atkSpeed); // Độ trễ 1 giây    
         onceAtk = true;
     }  

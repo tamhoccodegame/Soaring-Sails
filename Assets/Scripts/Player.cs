@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private PlayerController1 playerController1;
     private LevelSystem levelSystem;
     private Inventory inventory;
+    private Equipment equipment;
 
 
     public UI_StatPlayerTest ui_StatPlayerTest;
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
 	[SerializeField] private UI_SkillTree uiSkillTree;
 	[SerializeField] private LevelBar levelBar;
     [SerializeField] private CraftingSystem craftingSystem;
-    [SerializeField] private Equipment equipment;
+    [SerializeField] private UI_Equipment uiEquipment;
 
     public ParticleSystem Dust;
     AudioManager audioManager;
@@ -26,12 +27,15 @@ public class Player : MonoBehaviour
 		playerSkills = new PlayerSkills();
 		inventory = new Inventory();
 		inventory.OnItemUsed += Inventory_OnItemUsed;
-		inventory.OnWeaponEquipped += Inventory_OnWeaponEquipped;
 
 
+        equipment = new Equipment();
         equipment.SetInventory(inventory);
 
+        uiEquipment.SetEquipment(equipment);
+
         uiInventory.SetInventory(inventory);
+        uiInventory.SetEquipment(equipment);
         uiInventory.SetPlayer(this);
 		uiSkillTree.SetPlayerSkills(playerSkills);
 		LevelSystem levelSystem = new LevelSystem();
@@ -44,12 +48,6 @@ public class Player : MonoBehaviour
 		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
 		audioManager = GetComponent<AudioManager>();
 
-	}
-
-	private void Inventory_OnWeaponEquipped(object sender, Inventory.OnWeaponEquippedEventArgs e)
-	{
-        SpriteRenderer spriteRenderer = transform.parent.Find("Active Weapon").Find("Weapon1").GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = e.item.GetSprite();
 	}
 
 	private void Inventory_OnItemUsed(object sender, Inventory.OnItemUsedEventArgs e)

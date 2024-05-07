@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemAssets : MonoBehaviour
 {
-    public static ItemAssets Instance { get; private set; }
+	public static ItemAssets Instance { get; private set; }
 
 	private void Awake()
 	{
@@ -15,6 +15,14 @@ public class ItemAssets : MonoBehaviour
 
 	public Sprite weaponSprite;
 	public Sprite coinSprite;
-	public Sprite medkitSprite;
 	public Sprite stickSprite;
+
+	public Sprite sHealthPotionSprite;
+	public Sprite mHealthPotionSprite;
+	public Sprite lHealthPotionSprite;
+
+	public Sprite sManaPotionSprite;
+	public Sprite mManaPotionSprite;
+	public Sprite lManaPotionSprite;
+
 }

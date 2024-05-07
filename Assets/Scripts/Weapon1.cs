@@ -26,7 +26,6 @@ public class Weapon1 : MonoBehaviour
     GameObject broomAnim;
 
 
-
     private void Awake()
     {
         playerController = GetComponentInParent<PlayerController1>();
@@ -49,7 +48,7 @@ public class Weapon1 : MonoBehaviour
     {
         MouseFollowWithOffset();
         FlipAmim();
-    }
+	}
 
 
     public void Satk()
@@ -64,7 +63,6 @@ public class Weapon1 : MonoBehaviour
     }
     public void Attack()
     {
-
         Vector3 mouseP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookdir = mouseP - activeWeapon.transform.position;
         float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;

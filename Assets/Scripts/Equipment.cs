@@ -1,48 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Equipment : MonoBehaviour
+public class Equipment
 {
-    Transform slotTemplate;
-    
-    private Inventory inventory;
 
-    void Start()
-    {
-        slotTemplate = transform.Find("SlotTemplate"); 
-    }
+	public event EventHandler OnEquipmentChange;
 
-    public void SetInventory(Inventory inventory)
-    {
-        this.inventory = inventory;
-		inventory.OnWeaponEquipped += Inventory_OnWeaponEquipped;
-    }
+	private Item equipItem;
+	private Inventory inventory;
 
-	private void Inventory_OnWeaponEquipped(object sender, Inventory.OnWeaponEquippedEventArgs e)
+
+	public Equipment()
 	{
-        RefreshEquipWeapon(e.item);
+		equipItem = null;
 	}
 
-	public void RefreshEquipWeapon(Item item)
-    {
-        foreach(Transform child in transform)
-        {
-            if(child == slotTemplate || !child.name.Contains("Slot"))
-            {
-                continue;
-            }
-            else
-            {
-                Destroy(child.gameObject);
-            }
-        }
+	public void SetInventory(Inventory inventory)
+	{
+		this.inventory = inventory;
+	}
 
-        RectTransform rectTransform = Instantiate(slotTemplate, transform).GetComponent<RectTransform>();
-        rectTransform.gameObject.SetActive(true);
+	public void EquipItem(Item item)
+	{
+		if(equipItem != null)
+		{
+			//Detach equippingItem and Add back to inventory
+			inventory.AddItem(equipItem);
+			//Equip item and Remove from inventory;
+			inventory.RemoveItem(item);
+		}
+		else
+		{
+			equipItem = item;
+			inventory.RemoveItem(equipItem);
+		}
+		OnEquipmentChange?.Invoke(this, EventArgs.Empty); 
+	}
 
-        Image image = rectTransform.Find("Image").GetComponent<Image>();
-        image.sprite = item.GetSprite();
-    }
+	public Item GetEquippedItem()
+	{
+		return equipItem;
+	}
 }

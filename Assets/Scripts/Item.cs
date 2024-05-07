@@ -23,7 +23,7 @@ public class Item
             default:
             case ItemType.Weapon:         return ItemAssets.Instance.weaponSprite;
             case ItemType.Coin:           return ItemAssets.Instance.coinSprite;
-            case ItemType.Medkit:         return ItemAssets.Instance.medkitSprite;
+            case ItemType.Medkit:         return ItemAssets.Instance.sHealthPotionSprite;
             case ItemType.Stick:          return ItemAssets.Instance.stickSprite;
         }
     }
