@@ -5,15 +5,17 @@ using UnityEngine.TextCore.Text;
 using UnityEngine.InputSystem;
 using System;
 using CodeMonkey;
+using UnityEngine.XR;
 
 
 public class PlayerController1 : MonoBehaviour
 {
-
+    
     public event EventHandler OnPlayerDie;
 
     public int health;
     public int damage = 10;
+    public float atkSpeed;
 
 	Animator animator;
 
@@ -24,11 +26,14 @@ public class PlayerController1 : MonoBehaviour
     private Rigidbody2D rb;
     public SpriteRenderer mySpriteRender;
 
-    // Skill dash //   
+    // Skill dash //
+   
+
     [SerializeField] float dashBoots = 15f;
     [SerializeField] float dashTime1 = 0.25f;
     public float dashTime2;
     bool onceDash = false;
+  
 
     private void Awake()
     {
@@ -68,8 +73,7 @@ public class PlayerController1 : MonoBehaviour
     {
         bool havemove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         if (havemove)
-        {
-
+        {        
             mySpriteRender.transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f); // sign lay dau cua so ( velocity) bo vao scale 
         }
     }
@@ -85,16 +89,19 @@ public class PlayerController1 : MonoBehaviour
             animator.SetBool("isRunning", false);
         }
     }
+    
     void Dash()
     {
         if (Input.GetKeyDown(KeyCode.Space) && dashTime2 < -1)
         {
+            animator.SetBool("Dash", true);
             moveSpeed += dashBoots;
             dashTime2 = dashTime1;
             onceDash = true;
         }
         if (onceDash && dashTime2 <= 0)
         {
+            animator.SetBool("Dash", false);
             moveSpeed -= dashBoots;
             onceDash = false;
         }
