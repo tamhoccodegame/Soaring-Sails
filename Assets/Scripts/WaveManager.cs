@@ -11,12 +11,13 @@ public class WaveManager : MonoBehaviour
     public GameObject spawn3;
     public GameObject spawn4;
     public GameObject[] enemyList;
-    public GameObject Boss;
+    public GameObject boss;
     private int numberOfEnemiesToSpawn = 2;
     private float spawnRadius = 2f;
     public int numberEnemy = 40;
     public float spawnDelay;
     private bool wasSpawn = false;
+    public GameObject healthBoss;
 
     private void Start()
     {
@@ -30,6 +31,12 @@ public class WaveManager : MonoBehaviour
             wasSpawn = true;
             StartCoroutine(SpawnDelay());
         }
+    }
+
+    private void SpawnBoss()
+    {
+        Instantiate(boss, spawn2.transform.position, Quaternion.identity);
+        healthBoss.SetActive(true);
     }
 
     private IEnumerator SpawnDelay()

@@ -6305,9 +6305,10 @@ MonoBehaviour:
   - {fileID: 6097572782810869701, guid: 126276e1d66bd3d43b0e243f80dd0b96, type: 3}
   - {fileID: 2561170875178480414, guid: 4b5023571c56890439bf7504d57c9cf3, type: 3}
   - {fileID: 8853865503197968833, guid: 0d1f031792ce21240b0fc4fc78cc5279, type: 3}
-  Boss: {fileID: 5074048072113569723, guid: ba88a28ee503f984c9ab2229761d9323, type: 3}
+  boss: {fileID: 0}
   numberEnemy: 40
   spawnDelay: 3
+  healthBoss: {fileID: 294429736}
 --- !u!4 &1251855903
 Transform:
   m_ObjectHideFlags: 0
@@ -33477,8 +33478,9 @@ GameObject:
   - component: {fileID: 1469446525}
   - component: {fileID: 1469446526}
   - component: {fileID: 1469446527}
+  - component: {fileID: 1469446528}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33502,7 +33504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -80}
+  m_AnchoredPosition: {x: 0, y: 80}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469446526
@@ -33568,6 +33570,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4fccda1b253234f884875e33012b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1469446528
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469446524}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba1d0f66f0b501641aa27ac27ebdd74d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1499010464
 GameObject:
   m_ObjectHideFlags: 0
