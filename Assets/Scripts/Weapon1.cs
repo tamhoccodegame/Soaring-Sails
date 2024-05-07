@@ -11,6 +11,9 @@ public class Weapon1 : MonoBehaviour
     [SerializeField] private GameObject slashAnimPrefab;
     [SerializeField] private Transform slashAnimSpawnPoint;
 
+    [SerializeField] private GameObject broomSlash;
+    [SerializeField] private Transform weaponAnimPoint;
+
     private PlayerControls playerControls;
     private ActiveWeapon activeWeapon;
     private PlayerController1 playerController;
@@ -19,8 +22,10 @@ public class Weapon1 : MonoBehaviour
     public GameObject WeaponCollider;
     public SpriteRenderer SlashRenderer;
 
-    public GameObject slashAnim;
-    
+    GameObject slashAnim;
+    GameObject broomAnim;
+
+
 
     private void Awake()
     {
@@ -49,56 +54,39 @@ public class Weapon1 : MonoBehaviour
 
     public void Satk()
     {
-
+        this.GetComponent<Renderer>().enabled = false;
         WeaponCollider.SetActive(true);
     }
     public void Eatk()
-    {     
-            WeaponCollider.SetActive(false);        
+    {
+        this.GetComponent<Renderer>().enabled = true;
+        WeaponCollider.SetActive(false);
     }
     public void Attack()
     {
-        slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
+
+        Vector3 mouseP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 lookdir = mouseP - activeWeapon.transform.position;
+        float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
+        slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.Euler(0, 0, angle));
         slashAnim.transform.parent = this.transform.parent;
-       
+
+        broomAnim = Instantiate(broomSlash, weaponAnimPoint.position, Quaternion.Euler(0, 0, angle));
+        
+        broomAnim.transform.parent = this.transform.parent;
     }
+  
+   
 
     private void FlipAmim()
     {
         Vector3 mouseP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookdir = mouseP - activeWeapon.transform.position;
         float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
+
         SlashRenderer.transform.rotation = Quaternion.Euler(0, 0, angle);
-        if (angle > -45)
-        {
-            SlashRenderer.flipY = false;
-            SlashRenderer.flipX = false;
-        } 
-        if (angle < 45)
-        {
-            SlashRenderer.flipY = false;
-            SlashRenderer.flipX = false;
-        }
-        if (angle > 135)
-        {
-            SlashRenderer.flipX = true;
-            SlashRenderer.flipY = false;
-        } 
-        if(angle < -135)
-        {
-            SlashRenderer.flipX = true;
-            SlashRenderer.flipY = false;
-        }
-
-
-        if (angle > 45 && angle < 135)
-          {
-              SlashRenderer.flipY = true;
-          }
-          else if (angle < -45 && angle > -135)
-          {
-              SlashRenderer.flipY = false;
-          }
+      
+       
     }
 
 
@@ -109,20 +97,10 @@ public class Weapon1 : MonoBehaviour
         Vector2 lookdir = mouseP - activeWeapon.transform.position;
         float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
         activeWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
-       
-        weaponCollider.transform.rotation = Quaternion.Euler(0, 0, angle);
-        if (angle > 90)
-        {
-            activeWeapon.transform.localScale = new Vector3(1, -1, 1);
-        }
-        else if (angle > -90)
-        {
-            activeWeapon.transform.localScale = new Vector3(1, 1, 1);
-        }
-        if (angle < -90)
-        {
-            activeWeapon.transform.localScale = new Vector3(1, -1, 1);
-        }
-    }
 
+        weaponCollider.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+       
+      }
+    
 }
