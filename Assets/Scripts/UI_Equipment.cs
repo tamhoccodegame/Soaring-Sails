@@ -8,9 +8,15 @@ public class UI_Equipment : MonoBehaviour
     private Transform equipmentSlotTemplate;
 	private Equipment equipment;
 
-	private void Start()
+	private void Awake()
 	{
-		equipmentSlotTemplate = transform.Find("SlotTemplate"); 
+		equipmentSlotTemplate = transform.Find("SlotTemplate");
+		if( equipmentSlotTemplate == null)
+		Debug.Log("Loi");
+		else
+		{
+			Debug.Log("Ko looi"); 
+		}
 	}
 
 	public void SetEquipment(Equipment equipment)

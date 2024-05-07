@@ -30,7 +30,9 @@ public class Inventory
         itemList = new List<Item>();
 
         AddItem(new Item { itemType = Item.ItemType.Weapon, amount = 1 });
-		AddItem(new Item { itemType = Item.ItemType.Medkit, amount = 1 });
+		AddItem(new Item { itemType = Item.ItemType.sHealthPotionSprite, amount = 1 });
+		AddItem(new Item { itemType = Item.ItemType.mHealthPotionSprite, amount = 1 });
+		AddItem(new Item { itemType = Item.ItemType.lHealthPotionSprite, amount = 1 });
 		AddItem(new Item { itemType = Item.ItemType.Stick, amount = 10 });
 	}
 
@@ -100,8 +102,14 @@ public class Inventory
 
 		switch(item.itemType)
 		{
-			case Item.ItemType.Medkit: 
-				OnItemUsed?.Invoke(this, new OnItemUsedEventArgs(50));
+			case Item.ItemType.sHealthPotionSprite: 
+				OnItemUsed?.Invoke(this, new OnItemUsedEventArgs(20));
+				break;
+			case Item.ItemType.mHealthPotionSprite:
+				OnItemUsed?.Invoke(this, new OnItemUsedEventArgs(40));
+				break;
+			case Item.ItemType.lHealthPotionSprite:
+				OnItemUsed?.Invoke(this, new OnItemUsedEventArgs(70));
 				break;
 		}
 
