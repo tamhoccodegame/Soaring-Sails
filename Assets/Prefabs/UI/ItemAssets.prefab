@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pfItemWorld: {fileID: 6762938313203937350, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
-  weaponSprite: {fileID: 21300000, guid: 6e0f8a3f2af7dc74c9756079f09ef518, type: 3}
-  coinSprite: {fileID: 21300000, guid: b590e8f96b55f9a4db841f5800f8a0ab, type: 3}
-  medkitSprite: {fileID: 21300000, guid: 0ce8696062bd9c5468a932c4a56ffb09, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 6fb51fcc92ff8734c90820ca9461b8c3, type: 3}
+  coinSprite: {fileID: 21300000, guid: 79d153e74f1043b4693df231c5151051, type: 3}
+  medkitSprite: {fileID: 21300000, guid: 483c3b6e0d0580b488ddc08d6b82520d, type: 3}
   stickSprite: {fileID: 21300000, guid: cf000a5ea08b760449ba00f19d75a0e9, type: 3}

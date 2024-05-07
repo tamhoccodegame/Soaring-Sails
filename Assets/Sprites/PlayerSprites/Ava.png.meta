@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 18d91f5316afbfa42aaa975ee036ae5a
+guid: b983459421b011c47b2f1648e39f238f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,19 +81,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -107,33 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -149,28 +110,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Monster3-Attack_0
+      name: Player_Idle-Sheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 4
+        y: 7
+        width: 25
+        height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac1a26d348dace34381adacfa2e07fd1
-      internalID: 1790979971
+      spriteID: 8b0d78394b5d74c43ad7127983415384
+      internalID: 282804075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monster3-Attack_1
+      name: Player_Idle-Sheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -178,20 +139,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1628e19f3e8ad44ab29f9cb9f14d217
-      internalID: 497200494
+      spriteID: 29663ebb464338c42bc12bb4a33fe431
+      internalID: -1831664626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monster3-Attack_2
+      name: Player_Idle-Sheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -199,20 +160,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ed24d1a204d03449b8d86a95a82b73d
-      internalID: 765082212
+      spriteID: c6445d51e44999342a75890ff5986c8a
+      internalID: 1370017879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monster3-Attack_3
+      name: Player_Idle-Sheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -220,20 +181,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 761e46af6277c2f4a9ee16c8df727901
-      internalID: -754209798
+      spriteID: 45a79d1f8c2323a4ba585eb7c48cf939
+      internalID: 843652487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monster3-Attack_4
+      name: Player_Idle-Sheet_4
       rect:
         serializedVersion: 2
         x: 128
@@ -241,20 +202,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c673452fc04fb744856df0d93b03edd
-      internalID: 1477833890
+      spriteID: 226b7c9848dd7d44390130fff0e7401a
+      internalID: -2117193282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monster3-Attack_5
+      name: Player_Idle-Sheet_5
       rect:
         serializedVersion: 2
         x: 160
@@ -262,20 +223,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a421b617539b9d48af574abff7248b5
-      internalID: -2058396232
+      spriteID: 5859a81457b4f8749b847a80ea9416d2
+      internalID: -1166585513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monster3-Attack_6
+      name: Player_Idle-Sheet_6
       rect:
         serializedVersion: 2
         x: 192
@@ -283,14 +244,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d52807bacb4dfe4baca892692ee47a9
-      internalID: 168805097
+      spriteID: 5d0b98459cdc43c43b45fd28309286c0
+      internalID: -1764204020
       vertices: []
       indices: 
       edges: []
@@ -306,13 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Monster3-Attack_0: 1790979971
-      Monster3-Attack_1: 497200494
-      Monster3-Attack_2: 765082212
-      Monster3-Attack_3: -754209798
-      Monster3-Attack_4: 1477833890
-      Monster3-Attack_5: -2058396232
-      Monster3-Attack_6: 168805097
+      Player_Idle-Sheet_0: 282804075
+      Player_Idle-Sheet_1: -1831664626
+      Player_Idle-Sheet_2: 1370017879
+      Player_Idle-Sheet_3: 843652487
+      Player_Idle-Sheet_4: -2117193282
+      Player_Idle-Sheet_5: -1166585513
+      Player_Idle-Sheet_6: -1764204020
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
