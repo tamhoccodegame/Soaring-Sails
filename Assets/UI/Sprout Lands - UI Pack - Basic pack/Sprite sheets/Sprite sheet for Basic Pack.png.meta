@@ -3,7 +3,7 @@ guid: 947cd950d4a4f49d6bd678bb3c206bac
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -4692,9 +4692,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 675
-        y: 38
+        y: 33
         width: 10
-        height: 9
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4818,9 +4818,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 771
-        y: 38
+        y: 33
         width: 10
-        height: 9
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4881,9 +4881,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 819
-        y: 38
+        y: 33
         width: 10
-        height: 9
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5532,9 +5532,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 614
-        y: 22
+        y: 17
         width: 4
-        height: 9
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5658,9 +5658,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 710
-        y: 22
+        y: 17
         width: 4
-        height: 9
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5847,9 +5847,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 854
-        y: 22
+        y: 17
         width: 4
-        height: 9
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
