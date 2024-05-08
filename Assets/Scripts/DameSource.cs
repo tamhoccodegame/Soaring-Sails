@@ -8,6 +8,7 @@ public class DameSource : MonoBehaviour
     
     private GameObject player;
     int damage ;
+    public ParticleSystem hitImpact;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class DameSource : MonoBehaviour
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null)
         {
+            Instantiate(hitImpact, enemy.transform.position, Quaternion.identity);
             enemy.TakeDamage(damage);
         }
     }

@@ -23,7 +23,7 @@ public class BossThungRac : Enemy
     public int exp;
     private float timer;
     public GameObject enemyPrefab;
-    //public ParticleSystem deadEffectChild;
+    public ParticleSystem deadEffect;
     public int numberOfEnemiesToSpawn = 4;
     public float spawnRadius = 2f;
     private bool wasSpawn = false;
@@ -38,9 +38,9 @@ public class BossThungRac : Enemy
         base.attackRadius = attackRadius;
         base.nextAttackTimer = nextAttackTimer;
         base.exp = exp;
-        //base.deadEffect = deadEffect;
+        base.deadEffect = deadEffect;
+        base.delayDie = .5f;
 
-       
     }
 
     public override void ControllerAction()
@@ -96,5 +96,5 @@ public class BossThungRac : Enemy
     {
         base.Die();
         OnBossDie?.Invoke(this, EventArgs.Empty);
-    }
+	}
 }

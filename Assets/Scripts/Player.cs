@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,7 +10,8 @@ public class Player : MonoBehaviour
     private LevelSystem levelSystem;
     private Inventory inventory;
     private Equipment equipment;
-
+    private int coin;
+    private TextMeshProUGUI coinText;
 
     public UI_StatPlayerTest ui_StatPlayerTest;
 
@@ -19,7 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] private CraftingSystem craftingSystem;
     [SerializeField] private UI_Equipment uiEquipment;
 
-    public ParticleSystem Dust;
+    public ParticleSystem levelUpEffect;
     AudioManager audioManager;
 
 	private void Start()
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
         uiInventory.SetEquipment(equipment);
         uiInventory.SetPlayer(this);
 		uiSkillTree.SetPlayerSkills(playerSkills);
+
 		LevelSystem levelSystem = new LevelSystem();
 		levelBar.SetLevelSystem(levelSystem);
 		SetLevelSystem(levelSystem);
@@ -48,6 +51,7 @@ public class Player : MonoBehaviour
 		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
 		audioManager = GetComponent<AudioManager>();
 
+        coinText = GameObject.Find("CoinText").GetComponent<TextMeshProUGUI>();
 	}
 
 	private void Inventory_OnItemUsed(object sender, Inventory.OnItemUsedEventArgs e)
@@ -59,11 +63,25 @@ public class Player : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
         ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
-        if(itemWorld != null)
+
+        if(itemWorld == null)
         {
-            inventory.AddItem(itemWorld.GetItem());
-            itemWorld.DestroySelf();
+            return;
         }
+
+		Item item = itemWorld.GetItem();
+
+		if (item.itemType == Item.ItemType.Coin)
+        {
+            coin += item.amount;
+            coinText.text = coin.ToString();
+			itemWorld.DestroySelf();
+			return;
+        }
+
+        inventory.AddItem(item);
+        itemWorld.DestroySelf();
+       
 	}
     
   
@@ -86,7 +104,7 @@ public class Player : MonoBehaviour
 
 	private void LevelSystem_OnLevelChanged(object sender, System.EventArgs e)
 	{
-        Dust.Play();
+        levelUpEffect.Play();
         audioManager.PlayAudioClip("levelup");
         playerSkills.AddSkillPoint(); 
 	}

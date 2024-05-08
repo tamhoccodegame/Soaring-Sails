@@ -11,7 +11,7 @@ public class normalEnemies : Enemy
     [SerializeField] private float attackRadius;
     [SerializeField] private float nextAttackTimer;
     public int exp;
-    //public ParticleSystem deadEffectChild;
+    public ParticleSystem deadEffect;
 
     private void Start()
     {
@@ -22,6 +22,7 @@ public class normalEnemies : Enemy
         base.attackRadius = attackRadius;
         base.nextAttackTimer = nextAttackTimer;
         base.exp = exp;
-        //base.deadEffect = deadEffect;
+        base.deadEffect = deadEffect;
+        base.delayDie = .1f;
     }
 }

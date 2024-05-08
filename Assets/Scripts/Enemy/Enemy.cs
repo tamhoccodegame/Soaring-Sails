@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public float attackRadius { get; set; }
     public float nextAttackTimer { get; set; }
     public int exp {  get; set; }
+    protected float delayDie;
     AudioManager audioManager;
     protected GameObject player;
     private float tempTime = 0;
@@ -126,14 +127,18 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die()
     {
-        //deadEffect.Play();
+        deadEffect.Play();
         player.transform.Find("Character").GetComponent<Player>().AddExperienceFromEnemy(exp);
-        //yield return new WaitForSeconds(.3f); 
         ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Coin, amount = Random.Range(20, 15) });
         ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Stick, amount = 1 });
-		Destroy(gameObject);
+		StartCoroutine(BeforeDie());
 	}
 
+    IEnumerator BeforeDie()
+    {
+		yield return new WaitForSeconds(delayDie);
+		Destroy(gameObject);
+	}
     private void FlipTowardsPlayer()
     {
         if (player != null && player.activeSelf)

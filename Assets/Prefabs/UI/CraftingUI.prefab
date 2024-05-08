@@ -513,7 +513,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2778291867526115143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,8 +1089,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2023649169187141100}
-  - {fileID: 6129473809041789280}
   - {fileID: 2272826416477626994}
+  - {fileID: 6129473809041789280}
   m_Father: {fileID: 6107243450309385014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

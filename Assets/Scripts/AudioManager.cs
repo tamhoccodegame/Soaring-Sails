@@ -20,7 +20,6 @@ public class AudioManager : MonoBehaviour
         if (audioClips.ContainsKey(clipName))
         {
             AudioSource.PlayClipAtPoint(audioClips[clipName], transform.position);
-            Debug.Log(transform.name);
         }
         else
         {
