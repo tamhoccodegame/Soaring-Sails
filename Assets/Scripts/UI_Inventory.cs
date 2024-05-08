@@ -14,12 +14,12 @@ public class UI_Inventory : MonoBehaviour
 	private Equipment equipment;
 	private Player player;
 
-
 	private void Awake()
 	{
 		itemSlotContainer = transform.Find("Slots");
-		itemSlotTemplate = transform.Find("Slots").Find("SlotTemplate"); 
+		itemSlotTemplate = transform.Find("Slots").Find("SlotTemplate");
 	}
+
 	public void SetPlayer(Player player)
 	{
 		this.player = player;

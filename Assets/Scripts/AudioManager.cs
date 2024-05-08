@@ -15,13 +15,17 @@ public class AudioManager : MonoBehaviour
         audioClips.Add("levelup", Resources.Load<AudioClip>("LevelUp"));
         audioClips.Add("attack", Resources.Load<AudioClip>("Attack"));
         audioClips.Add("bossmusic", Resources.Load<AudioClip>("BossMusic"));
-    }
+        audioClips.Add("bossskill", Resources.Load<AudioClip>("BossSkill"));
+        audioClips.Add("uibutton1", Resources.Load<AudioClip>("UIButton1"));
+		audioClips.Add("uibutton2", Resources.Load<AudioClip>("UIButton2"));
+        audioClips.Add("winsound", Resources.Load<AudioClip>("WinSound"));
+	}
 
     public void PlayAudioClip(string clipName)
     {
         if (audioClips.ContainsKey(clipName))
         {
-            AudioSource.PlayClipAtPoint(audioClips[clipName], transform.position);
+            AudioSource.PlayClipAtPoint(audioClips[clipName], gameObject.transform.position);
         }
         else
         {

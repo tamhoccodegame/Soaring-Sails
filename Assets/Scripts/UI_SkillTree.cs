@@ -15,6 +15,7 @@ public class UI_SkillTree : MonoBehaviour
 	private PlayerSkills playerSkills;
 	private List<SkillButton> skillButtonList;
 	private TextMeshProUGUI skillPointsText;
+
 	private void Awake()
 	{
 		skillPointsText = transform.Find("PointText").GetComponent<TextMeshProUGUI>();
@@ -105,7 +106,7 @@ public class UI_SkillTree : MonoBehaviour
 		private PlayerSkills.SkillType skillType;
 		private Material skillUnlockableMaterial;
 		private Material skillLockedMaterial;
-
+		
 		public SkillButton(Transform transform, PlayerSkills playerSkills, PlayerSkills.SkillType skillType, Material skillUnlockableMaterial, Material skillLockedMaterial)
 		{
 			this.transform = transform;

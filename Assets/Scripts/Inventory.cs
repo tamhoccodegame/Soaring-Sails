@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 public class Inventory
 {
     public event EventHandler OnInventoryChange;
+	public event EventHandler OnCoinDrop;
+	
 	public event EventHandler<OnItemUsedEventArgs> OnItemUsed;
 	public class OnItemUsedEventArgs : EventArgs
 	{
@@ -70,6 +72,10 @@ public class Inventory
 
     public void RemoveItem(Item item)
     {
+		if(item.itemType == Item.ItemType.Coin)
+		{
+			OnCoinDrop?.Invoke(this, EventArgs.Empty);
+		}
 		if (item.IsStackable())
 		{
 			Item itemInInventory = null;

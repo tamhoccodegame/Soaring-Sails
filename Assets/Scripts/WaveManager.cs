@@ -13,6 +13,7 @@ public class WaveManager : MonoBehaviour
     public GameObject[] enemyList;
     public GameObject boss;
     public GameObject healthBar;
+    public GameObject timeline;
     private int numberOfEnemiesToSpawn = 2;
     private float spawnRadius = 2f;
     public int enemyMax = 10;
@@ -35,15 +36,15 @@ public class WaveManager : MonoBehaviour
        {
             wasSpawn = true;
             StartCoroutine(SpawnDelay());
-       }else if(numberEnemy < 1 && AllEnemiesDead())
-       {
-            wave2.SetActive(true);
-            numberEnemy = enemyMax;
-            SpawnBoss();
+       //}else if(numberEnemy < 1 && AllEnemiesDead())
+       //{
+       //     wave2.SetActive(true);
+       //     numberEnemy = enemyMax;
+       //     SpawnBoss();
         }
-        else
+        else if(numberEnemy < 1 && AllEnemiesDead()) 
         {
-			//win 
+            timeline.SetActive(true);
 		}
     }
 

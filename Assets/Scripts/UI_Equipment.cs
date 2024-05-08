@@ -7,6 +7,7 @@ public class UI_Equipment : MonoBehaviour
 {
     private Transform equipmentSlotTemplate;
 	private Equipment equipment;
+	private AudioManager audioManager;
 
 	private void Awake()
 	{
@@ -17,6 +18,11 @@ public class UI_Equipment : MonoBehaviour
 		{
 			Debug.Log("Ko looi"); 
 		}
+	}
+
+	private void Start()
+	{
+		audioManager = GetComponent<AudioManager>();
 	}
 
 	public void SetEquipment(Equipment equipment)

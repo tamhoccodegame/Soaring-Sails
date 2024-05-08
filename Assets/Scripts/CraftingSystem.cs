@@ -11,14 +11,14 @@ public class CraftingSystem : MonoBehaviour
     private Transform ingredientSlotTemplate;
     private Transform ingredientSlotContainer;
     public Inventory inventory;
+    private AudioManager audioManager;
     void Start()
     {
         ingredientSlotTemplate = transform.Find("Ingredients").Find("ingredientSlotTemplate");
         ingredientSlotContainer = transform.Find("Ingredients");
-
 		transform.Find("Recipes").Find("Broom").GetComponent<Button_UI>().ClickFunc = () =>
         {
-            recipe = new Recipe();
+			recipe = new Recipe();
             ShowIngredients(recipe.GetIngridients("Broom"), new Item { itemType = Item.ItemType.Weapon, amount = 1});
         };
        
@@ -91,7 +91,7 @@ public class CraftingSystem : MonoBehaviour
                     else
                     {
                         amountText.color = Color.red;
-                }
+                    }
 
 				transform.Find("CraftBtn").GetComponent<Button_UI>().ClickFunc = () =>
 				{

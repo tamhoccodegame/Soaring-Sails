@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 		playerSkills = new PlayerSkills();
 		inventory = new Inventory();
 		inventory.OnItemUsed += Inventory_OnItemUsed;
+		inventory.OnCoinDrop += Inventory_OnCoinDrop;
 
 
         equipment = new Equipment();
@@ -54,6 +55,12 @@ public class Player : MonoBehaviour
         coinText = GameObject.Find("CoinText").GetComponent<TextMeshProUGUI>();
 	}
 
+	private void Inventory_OnCoinDrop(object sender, System.EventArgs e)
+	{
+        coin = 0;
+        coinText.text = coin.ToString();
+	}
+
 	private void Inventory_OnItemUsed(object sender, Inventory.OnItemUsedEventArgs e)
 	{
         playerController1.health += e.plusHealth;
@@ -75,6 +82,7 @@ public class Player : MonoBehaviour
         {
             coin += item.amount;
             coinText.text = coin.ToString();
+            inventory.AddItem(item); 
 			itemWorld.DestroySelf();
 			return;
         }
