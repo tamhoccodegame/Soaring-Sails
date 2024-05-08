@@ -83,14 +83,14 @@ public class CraftingSystem : MonoBehaviour
                     {
                         if (item.amount - ingredient.amount <= 0)
                         {
-                            amountText.color = Color.red;
+                            amountText.color = Color.black;
                         }
                         
                     }
                     else
                     {
-                        amountText.color = Color.red;
-                    }
+                        amountText.color = Color.black;
+                }
 
 				transform.Find("CraftBtn").GetComponent<Button_UI>().ClickFunc = () =>
 				{
