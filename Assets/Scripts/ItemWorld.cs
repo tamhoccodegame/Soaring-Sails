@@ -37,6 +37,7 @@ public class ItemWorld : MonoBehaviour
     {
         this.item = item;
         spriteRenderer.sprite = item.GetSprite();
+
     }
     public Item GetItem()
     {

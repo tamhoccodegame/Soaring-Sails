@@ -20,11 +20,13 @@ public class WaveManager : MonoBehaviour
     public float spawnDelay;
     private bool wasSpawn = false;
     private List<GameObject> ListEnemyLive = new List<GameObject>();
-
+    public AudioSource audioSource;
+    private AudioManager audioManager;
     private void Start()
     {
         wave1.SetActive(true);
         numberEnemy = enemyMax;
+        audioManager = GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -61,6 +63,10 @@ public class WaveManager : MonoBehaviour
     private void SpawnBoss()
     {
         Instantiate(boss, spawn2.transform.position, Quaternion.identity);
+        audioSource.clip = audioManager.GetAudioClip("bossmusic");
+        audioSource.volume = 0.1f;
+        audioSource.pitch = 1.1f;
+        audioSource.Play();
 		healthBar.SetActive(true);
 	}
 

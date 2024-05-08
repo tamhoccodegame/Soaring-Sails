@@ -129,8 +129,9 @@ public class Enemy : MonoBehaviour
     {
         deadEffect.Play();
         player.transform.Find("Character").GetComponent<Player>().AddExperienceFromEnemy(exp);
-        ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Coin, amount = Random.Range(20, 15) });
+        ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Coin, amount = Random.Range(1,5) });
         ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Stick, amount = 1 });
+        ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.mHealthPotionSprite, amount = 1 });
 		StartCoroutine(BeforeDie());
 	}
 

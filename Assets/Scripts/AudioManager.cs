@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
         audioClips.Add("footstep", Resources.Load<AudioClip>("FootStep"));
         audioClips.Add("footstep2", Resources.Load<AudioClip>("FootStep2"));
         audioClips.Add("levelup", Resources.Load<AudioClip>("LevelUp"));
+        audioClips.Add("attack", Resources.Load<AudioClip>("Attack"));
+        audioClips.Add("bossmusic", Resources.Load<AudioClip>("BossMusic"));
     }
 
     public void PlayAudioClip(string clipName)
@@ -26,4 +28,13 @@ public class AudioManager : MonoBehaviour
             Debug.Log("Ko");
         }
     }
+
+	public AudioClip GetAudioClip(string clipName)
+	{
+		if (audioClips.ContainsKey(clipName))
+		{
+			return audioClips[clipName];
+		}
+        return null;
+	}
 }

@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 1
-  health: 1000
+  health: 3000
   speed: 0.5
   damageMin: 10
   damageMax: 13
