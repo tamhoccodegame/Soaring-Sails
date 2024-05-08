@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         FlipTowardsPlayer();
-       // anim.SetTrigger("Run");
+        anim.SetTrigger("Run");
         if (player != null && player.activeSelf)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
 
     private void AttackPlayer()
     {
-       // anim.SetTrigger("Attack");
+        anim.SetTrigger("Attack");
         if (Time.time > tempTime + nextAttackTimer)
         {
             Debug.Log("Attack");
@@ -113,17 +113,18 @@ public class Enemy : MonoBehaviour
         return Random.Range(min, max + 1);
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
         {
-            Die(); 
+            Die();
+            Debug.Log(health);
         }
         audioManager.PlayAudioClip("enemyHitImpact"); 
     }
 
-    void Die()
+    public virtual void Die()
     {
         //deadEffect.Play();
         player.transform.Find("Character").GetComponent<Player>().AddExperienceFromEnemy(exp);

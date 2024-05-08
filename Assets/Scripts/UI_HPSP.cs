@@ -24,7 +24,6 @@ public class UI_HPSP : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		Debug.Log(Mathf.Clamp((Mathf.Abs(playerController1.dashTime2)), 0f, 1f));
 		healthBar.value = (float) playerController1.health / 100;
 		if(cdBar != null)
 		{

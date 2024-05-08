@@ -16,7 +16,7 @@ public class Recipe
 				{
 					ingridientsList = new List<Item>();
 					ingridientsList.Add(new Item{itemType = Item.ItemType.Stick, amount = 1 });
-					//ingridientsList.Add(new Item { itemType = Item.ItemType.Coin, amount = 20 });
+					ingridientsList.Add(new Item { itemType = Item.ItemType.Coin, amount = 20 });
 					return ingridientsList;
 				}
 

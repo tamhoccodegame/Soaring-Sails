@@ -1,9 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossThungRac : Enemy
 {
+    public event EventHandler OnBossDie;
+    public event EventHandler<OnBossDamagedEventArgs> OnBossDamaged;
+    public class OnBossDamagedEventArgs : EventArgs
+    {
+        public int health;
+    }
+
     public int health;
     [SerializeField] private float speed;
     [SerializeField] private int damageMin;
@@ -19,7 +28,7 @@ public class BossThungRac : Enemy
     public float spawnRadius = 2f;
     private bool wasSpawn = false;
 
-    private void Start()
+	private void Start()
     {
         timer = nextAttackTimer;
         base.health = health;
@@ -30,6 +39,8 @@ public class BossThungRac : Enemy
         base.nextAttackTimer = nextAttackTimer;
         base.exp = exp;
         //base.deadEffect = deadEffect;
+
+       
     }
 
     public override void ControllerAction()
@@ -73,5 +84,17 @@ public class BossThungRac : Enemy
                 Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             }
         }
+    }
+
+	public override void TakeDamage(int damage)
+	{
+		base.TakeDamage(damage);
+        OnBossDamaged?.Invoke(this, new OnBossDamagedEventArgs { health = base.health});
+	}
+
+    public override void Die()
+    {
+        base.Die();
+        OnBossDie?.Invoke(this, EventArgs.Empty);
     }
 }
