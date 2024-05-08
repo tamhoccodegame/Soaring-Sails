@@ -81,6 +81,7 @@ public class CraftingSystem : MonoBehaviour
                 
                     if (ingredient.itemType == item.itemType)
                     {
+                    //neu k du so luong
                         if (item.amount - ingredient.amount <= 0)
                         {
                             amountText.color = Color.red;
