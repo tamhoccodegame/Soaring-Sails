@@ -14,23 +14,48 @@ public class WaveManager : MonoBehaviour
     public GameObject boss;
     private int numberOfEnemiesToSpawn = 2;
     private float spawnRadius = 2f;
-    public int numberEnemy = 40;
+    public int enemyMax = 40;
+    public int numberEnemy;
     public float spawnDelay;
     private bool wasSpawn = false;
     public GameObject healthBoss;
+    private List<GameObject> ListEnemyLive = new List<GameObject>();
 
     private void Start()
     {
         wave1.SetActive(true);
+        numberEnemy = enemyMax;
     }
 
     private void Update()
     {
        if(!wasSpawn && numberEnemy > 0)
-        {
+       {
             wasSpawn = true;
             StartCoroutine(SpawnDelay());
+       }else if(numberEnemy < 1 && AllEnemiesDead())
+       {
+            wave2.SetActive(true);
+            numberEnemy = enemyMax;
+            SpawnBoss();
         }
+        else
+        {
+            //win
+        }
+    }
+
+    private bool AllEnemiesDead()
+    {
+        foreach (var enemy in ListEnemyLive)
+        {
+            if (enemy != null)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private void SpawnBoss()
@@ -55,7 +80,7 @@ public class WaveManager : MonoBehaviour
         {
             float angle = i * Mathf.PI * 2 / numberOfEnemiesToSpawn;
             Vector3 spawnPosition = location.transform.position + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * spawnRadius;
-            Instantiate(RandomEnemy(), spawnPosition, Quaternion.identity);
+            ListEnemyLive.Add(Instantiate(RandomEnemy(), spawnPosition, Quaternion.identity));
         }
         numberEnemy -= numberOfEnemiesToSpawn;
     }
