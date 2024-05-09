@@ -15,7 +15,7 @@ public class Attack : MonoBehaviour
 
 	void Update()
 	{
-		atkSpeed = GetComponentInParent<PlayerController1>().atkSpeed;
+		atkSpeed = transform.parent.GetComponentInParent<PlayerController1>().atkSpeed;
 		if (onceAtk == true)
 
 			if (Input.GetMouseButtonDown(0) && atkSpeed2 < atkSpeed)

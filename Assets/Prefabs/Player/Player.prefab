@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7836755003245454278}
   - component: {fileID: 6912784725514622765}
-  - component: {fileID: 8381808226219777203}
   - component: {fileID: 4700230549827255576}
+  - component: {fileID: 2954850105963862273}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -65,26 +65,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8381808226219777203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43313699063371586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d68798b0feb9d4b8d934e8777c0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damage: 25
-  atkSpeed: 0
-  moveSpeed: 5
-  mySpriteRender: {fileID: 676644349198567543}
-  dashBoots: 10
-  dashTime1: 0.25
-  dashTime2: 0
 --- !u!114 &4700230549827255576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +95,26 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2954850105963862273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43313699063371586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d68798b0feb9d4b8d934e8777c0a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  damage: 25
+  atkSpeed: 0
+  moveSpeed: 5
+  mySpriteRender: {fileID: 676644349198567543}
+  dashBoots: 10
+  dashTime1: 0.25
+  dashTime2: 0
 --- !u!1 &355193033511162934
 GameObject:
   m_ObjectHideFlags: 0
@@ -5100,6 +5100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon1: {fileID: 3841235680635678022}
+  atkSpeed: 0
+  atkSpeed2: 0
 --- !u!58 &6224727195153610488
 CircleCollider2D:
   m_ObjectHideFlags: 0
