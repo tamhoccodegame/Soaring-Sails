@@ -68,7 +68,7 @@ public class UI_Inventory : MonoBehaviour
 				{
 					equipment.EquipItem(item);
 				}		
-				else if(item.itemType != Item.ItemType.Stick)
+				else if(item.CanUse())
 				{
 					inventory.UseItem(item);
 				}

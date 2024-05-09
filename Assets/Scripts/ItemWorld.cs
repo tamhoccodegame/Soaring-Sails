@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
+using System;
 
 public class ItemWorld : MonoBehaviour
 {
+
     private Item item;
     private SpriteRenderer spriteRenderer;
 
@@ -24,8 +26,10 @@ public class ItemWorld : MonoBehaviour
         ItemWorld itemWorld = SpawnItemWorld(dropPosition + randomDir * 2, item);
         itemWorld.GetComponent<Rigidbody2D>().AddForce(randomDir * 5, ForceMode2D.Impulse);
 
-        return itemWorld;
+
+		return itemWorld;
     }
+
 
 	private void Awake()
 	{

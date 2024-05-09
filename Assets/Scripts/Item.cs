@@ -56,5 +56,23 @@ public class Item
                 return false;
         }
     }
+
+    public bool CanUse()
+    {
+        switch(itemType)
+        {
+            default:
+			case ItemType.sHealthPotionSprite:
+			case ItemType.mHealthPotionSprite:
+			case ItemType.lHealthPotionSprite:
+			case ItemType.sManaPotionSprite:
+			case ItemType.mManaPotionSprite:
+			case ItemType.lManaPotionSprite:
+                return true;
+            case ItemType.Stick:
+            case ItemType.Coin:
+                return false;
+		}
+    }
  
 }

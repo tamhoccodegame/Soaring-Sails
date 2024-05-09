@@ -86,6 +86,10 @@ public class CraftingSystem : MonoBehaviour
                         {
                             amountText.color = Color.red;
                         }
+                        else
+                        {
+                            amountText.color = new Color(192f, 192f, 192f); 
+                        }
                         
                     }
                     else

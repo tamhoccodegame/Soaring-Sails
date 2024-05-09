@@ -1946,7 +1946,7 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -509231690345427110, guid: 853a613ffaa80194783d93e5244db86b, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: -4399651666344443527, guid: 853a613ffaa80194783d93e5244db86b, type: 2}
     value: {fileID: 2053185482}
@@ -36600,7 +36600,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844534947}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fc1046509d3abc4c88bcb85ba6dbdb3, type: 3}
   m_Name: 

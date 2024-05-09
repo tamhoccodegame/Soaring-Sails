@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 23
+  m_SortingOrder: 7
   m_Sprite: {fileID: 2006877023, guid: c3c5e92c4ea143742b6876bb84b3cd32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   damageMax: 13
   attackRadius: 2.5
   nextAttackTimer: 1
-  nextChangeAction: 10
+  nextChangeAction: 5
   exp: 150
   enemyPrefab: {fileID: 8853865503197968833, guid: 0d1f031792ce21240b0fc4fc78cc5279, type: 3}
   deadEffect: {fileID: 1879945405493372072}
