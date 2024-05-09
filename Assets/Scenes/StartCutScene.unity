@@ -239,7 +239,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 36.8}
+  m_AnchoredPosition: {x: 49.1, y: 36.8}
   m_SizeDelta: {x: 156.96, y: 20.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &97053556
@@ -264,8 +264,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: What is this!?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -289,15 +289,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.13
-  m_fontSizeBase: 15.13
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 4
-  m_VerticalAlignment: 4096
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 74.84758, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1771,7 +1771,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 15
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.5, y: 2, z: 0}
   m_MaxChunkCount: 16
@@ -12387,12 +12387,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4741919350471856825, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
+      propertyPath: m_Size.x
+      value: 3.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741919350471856825, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741919350471856825, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 483c3b6e0d0580b488ddc08d6b82520d, type: 3}
     - target: {fileID: 4741919350471856825, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
       propertyPath: m_SortingOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741919350471856825, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4741919350471856825, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12453,6 +12465,14 @@ PrefabInstance:
     - target: {fileID: 6762938313203937350, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531821138125844647, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 3.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531821138125844647, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7531821138125844647, guid: 9243b88df2eb3e74c966e737882f83dc, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -39379,7 +39399,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 36.8}
+  m_AnchoredPosition: {x: 27.9, y: 36.8}
   m_SizeDelta: {x: 156.96, y: 20.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588269544
@@ -39404,8 +39424,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Phew.... let's move on
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -39429,8 +39449,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.13
-  m_fontSizeBase: 15.13
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -39465,7 +39485,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 36.759476, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -39557,7 +39577,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 20
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -41482,7 +41502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 737227656969722141, guid: 57de576e051801243b02a89e7bf0487c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.55
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 737227656969722141, guid: 57de576e051801243b02a89e7bf0487c, type: 3}
       propertyPath: m_AnchorMax.y
@@ -43690,7 +43710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6554495697208395879, guid: 57de576e051801243b02a89e7bf0487c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.59
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6554495697208395879, guid: 57de576e051801243b02a89e7bf0487c, type: 3}
       propertyPath: m_AnchorMax.y
@@ -44586,7 +44606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8585862653930779454, guid: 57de576e051801243b02a89e7bf0487c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8585862653930779454, guid: 57de576e051801243b02a89e7bf0487c, type: 3}
       propertyPath: m_AnchorMax.y

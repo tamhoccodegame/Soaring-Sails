@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
         audioClips.Add("uibutton1", Resources.Load<AudioClip>("UIButton1"));
 		audioClips.Add("uibutton2", Resources.Load<AudioClip>("UIButton2"));
         audioClips.Add("winsound", Resources.Load<AudioClip>("WinSound"));
+        audioClips.Add("failsound", Resources.Load<AudioClip>("FailSound"));
 	}
 
     public void PlayAudioClip(string clipName)

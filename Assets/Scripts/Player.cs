@@ -29,8 +29,7 @@ public class Player : MonoBehaviour
 		playerSkills = new PlayerSkills();
 		inventory = new Inventory();
 		inventory.OnItemUsed += Inventory_OnItemUsed;
-		inventory.OnCoinChange += Inventory_OnCoinChange; ;
-
+		inventory.OnCoinChange += Inventory_OnCoinChange;
 
         equipment = new Equipment();
         equipment.SetInventory(inventory);
@@ -48,11 +47,18 @@ public class Player : MonoBehaviour
 
         craftingSystem.SetInventory(inventory);
         playerController1 = GetComponentInParent<PlayerController1>();
-        
+		playerController1.OnPlayerDie += PlayerController1_OnPlayerDie;
+
+
 		playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
 		audioManager = GetComponent<AudioManager>();
 
         coinText = GameObject.Find("CoinText").GetComponent<TextMeshProUGUI>();
+	}
+
+	private void PlayerController1_OnPlayerDie(object sender, System.EventArgs e)
+	{
+        audioManager.PlayAudioClip("failsound");
 	}
 
 	private void Inventory_OnCoinChange(object sender, Inventory.OnCoinChangeEventArgs e)

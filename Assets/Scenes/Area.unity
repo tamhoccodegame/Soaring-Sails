@@ -38344,6 +38344,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2484339241916251429, guid: 57de576e051801243b02a89e7bf0487c, type: 3}
+      propertyPath: m_text
+      value: "- Move with WASD.\n- Use mouse to direct attack.\n- (I) for inventory\n-
+        (C) for crafting\n- (P) for upgrade stat. \n- (Space) to Dash"
+      objectReference: {fileID: 0}
     - target: {fileID: 2659035086006205063, guid: 57de576e051801243b02a89e7bf0487c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
