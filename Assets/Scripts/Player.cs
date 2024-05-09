@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 		playerSkills = new PlayerSkills();
 		inventory = new Inventory();
 		inventory.OnItemUsed += Inventory_OnItemUsed;
-		inventory.OnCoinDrop += Inventory_OnCoinDrop;
+		inventory.OnCoinChange += Inventory_OnCoinChange; ;
 
 
         equipment = new Equipment();
@@ -55,11 +55,15 @@ public class Player : MonoBehaviour
         coinText = GameObject.Find("CoinText").GetComponent<TextMeshProUGUI>();
 	}
 
-	private void Inventory_OnCoinDrop(object sender, System.EventArgs e)
+	private void Inventory_OnCoinChange(object sender, Inventory.OnCoinChangeEventArgs e)
 	{
-        coin = 0;
-        coinText.text = coin.ToString();
+        RefreshCoin(e.amount);
 	}
+
+    private void RefreshCoin(int amount)
+    {
+        coinText.text = amount.ToString();
+    }
 
 	private void Inventory_OnItemUsed(object sender, Inventory.OnItemUsedEventArgs e)
 	{
@@ -78,17 +82,16 @@ public class Player : MonoBehaviour
 
 		Item item = itemWorld.GetItem();
 
-		if (item.itemType == Item.ItemType.Coin)
-        {
-            coin += item.amount;
-            coinText.text = coin.ToString();
-            inventory.AddItem(item); 
-			itemWorld.DestroySelf();
-			return;
-        }
-
         inventory.AddItem(item);
-        itemWorld.DestroySelf();
+
+
+		if (item.itemType == Item.ItemType.Coin)
+		{
+			Item coin = inventory.GetItemInList(Item.ItemType.Coin);
+			RefreshCoin(coin.amount);
+		}
+
+		itemWorld.DestroySelf();
        
 	}
     

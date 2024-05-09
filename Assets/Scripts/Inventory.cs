@@ -7,8 +7,13 @@ using UnityEngine.EventSystems;
 public class Inventory
 {
     public event EventHandler OnInventoryChange;
-	public event EventHandler OnCoinDrop;
-	
+	public event EventHandler<OnCoinChangeEventArgs> OnCoinChange;
+	public class OnCoinChangeEventArgs : EventArgs
+	{
+		public int amount;
+	}
+
+
 	public event EventHandler<OnItemUsedEventArgs> OnItemUsed;
 	public class OnItemUsedEventArgs : EventArgs
 	{
@@ -74,8 +79,20 @@ public class Inventory
     {
 		if(item.itemType == Item.ItemType.Coin)
 		{
-			OnCoinDrop?.Invoke(this, EventArgs.Empty);
+			foreach(Item inventoryItem in itemList)
+			{
+				if(inventoryItem.itemType == item.itemType)
+				{
+					inventoryItem.amount -= item.amount;
+					OnCoinChange?.Invoke(this, new OnCoinChangeEventArgs { amount = inventoryItem.amount });
+					if(inventoryItem.amount <= 0) itemList.Remove(inventoryItem);
+					OnInventoryChange?.Invoke(this, EventArgs.Empty);
+					return;
+				}
+								
+			}
 		}
+
 		if (item.IsStackable())
 		{
 			Item itemInInventory = null;
@@ -90,7 +107,6 @@ public class Inventory
 
 			if (itemInInventory != null && itemInInventory.amount <= 0)
 			{
-				Debug.Log(item.itemType.ToString());
 				itemList.Remove(itemInInventory);
 			}
 		}
@@ -121,6 +137,15 @@ public class Inventory
 
 	}
 
+	public Item GetItemInList(Item.ItemType itemType)
+	{
+		foreach(Item inventoryItem in itemList)
+		{
+			if(inventoryItem.itemType == itemType)
+				return inventoryItem;
+		}
+		return null;
+	}
 	public List<Item> GetItemList()
     {
         return itemList;
