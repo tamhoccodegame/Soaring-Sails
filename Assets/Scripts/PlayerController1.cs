@@ -13,6 +13,7 @@ public class PlayerController1 : MonoBehaviour
 
     public int health;
     public int damage = 10;
+    public int damage ;
     public float atkSpeed;
 
 	Animator animator;
