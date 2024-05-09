@@ -194,7 +194,7 @@ MonoBehaviour:
   damageMax: 13
   attackRadius: 2.5
   nextAttackTimer: 1
-  nextChangeAction: 10
+  nextChangeAction: 5
   exp: 150
   enemyPrefab: {fileID: 8853865503197968833, guid: 0d1f031792ce21240b0fc4fc78cc5279, type: 3}
   deadEffect: {fileID: 1879945405493372072}
