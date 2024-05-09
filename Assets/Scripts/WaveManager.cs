@@ -36,15 +36,17 @@ public class WaveManager : MonoBehaviour
        {
             wasSpawn = true;
             StartCoroutine(SpawnDelay());
-       //}else if(numberEnemy < 1 && AllEnemiesDead())
-       //{
-       //     wave2.SetActive(true);
-       //     numberEnemy = enemyMax;
-       //     SpawnBoss();
         }
-        else if(numberEnemy < 1 && AllEnemiesDead()) 
+        else if (numberEnemy < 1 && AllEnemiesDead())
         {
-            timeline.SetActive(true);
+            wave2.SetActive(true);
+            numberEnemy = enemyMax;
+            SpawnBoss();
+        }
+        else
+        {
+            //win thi se kich hoat cutscene win, em coi lai dieu kien khuc nay
+           // timeline.SetActive(true);
 		}
     }
 
