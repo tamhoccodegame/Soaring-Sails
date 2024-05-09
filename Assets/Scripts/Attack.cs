@@ -5,8 +5,6 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public Weapon1 weapon1;
-    bool onceAtk = true;
-    float atkSpeed;
     bool onceAtk = false;
     [SerializeField] float atkSpeed;
     public float atkSpeed2;
