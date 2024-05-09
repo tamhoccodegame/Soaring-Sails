@@ -32,9 +32,9 @@ public class Inventory
         itemList = new List<Item>();
 
         AddItem(new Item { itemType = Item.ItemType.Weapon, amount = 1 });
-		AddItem(new Item { itemType = Item.ItemType.sHealthPotionSprite, amount = 1 });
-		AddItem(new Item { itemType = Item.ItemType.mHealthPotionSprite, amount = 1 });
-		AddItem(new Item { itemType = Item.ItemType.lHealthPotionSprite, amount = 1 });
+		AddItem(new Item { itemType = Item.ItemType.sHealthPotionSprite, amount = 20 });
+		AddItem(new Item { itemType = Item.ItemType.mHealthPotionSprite, amount = 20 });
+		AddItem(new Item { itemType = Item.ItemType.lHealthPotionSprite, amount = 20 });
 		AddItem(new Item { itemType = Item.ItemType.Stick, amount = 10 });
 	}
 

@@ -15,7 +15,6 @@ public class ItemWorld : MonoBehaviour
         ItemWorld itemWorld = transform.GetComponent<ItemWorld>();
         itemWorld.SetItem(item);
 
-
         return itemWorld;
     }
 

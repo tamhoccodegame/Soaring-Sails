@@ -41,7 +41,6 @@ public class BossThungRac : Enemy
         base.exp = exp;
         base.deadEffect = deadEffect;
         base.delayDie = .5f;
-        audioManager = GetComponent<AudioManager>();
     }
 
     public override void ControllerAction()
@@ -75,7 +74,6 @@ public class BossThungRac : Enemy
     public override void SpecialSkill()
     {
         base.SpecialSkill();
-        audioManager.PlayAudioClip("bossskill");
         if (!wasSpawn)
         {
             wasSpawn = true;

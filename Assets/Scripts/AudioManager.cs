@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
     {
         if (audioClips.ContainsKey(clipName))
         {
-            AudioSource.PlayClipAtPoint(audioClips[clipName], gameObject.transform.position);
+            AudioSource.PlayClipAtPoint(audioClips[clipName], transform.position);
         }
         else
         {

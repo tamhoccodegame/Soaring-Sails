@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -131,7 +131,6 @@ public class Enemy : MonoBehaviour
         player.transform.Find("Character").GetComponent<Player>().AddExperienceFromEnemy(exp);
         ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Coin, amount = Random.Range(1,5) });
         ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.Stick, amount = 1 });
-        ItemWorld.DropItem(transform.position, new Item { itemType = Item.ItemType.mHealthPotionSprite, amount = 1 });
 		StartCoroutine(BeforeDie());
 	}
 
